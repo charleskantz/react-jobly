@@ -68,7 +68,7 @@ const App = () => {
     }
   };
 
-  // todo: loading spinner
+  // todo: custom spinner
 
   return (
     <div className="App">

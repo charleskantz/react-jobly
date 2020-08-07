@@ -7,9 +7,10 @@ import Jobs from "../Jobs/Jobs";
 import Login from "../Account/Login";
 import Profile from "../Account/Profile";
 import SecureRoute from './SecureRoute';
+import Signup from "../Account/Signup";
 
 // handles all routing for our app
-function Routes({ userInfo }) {
+function Routes({ login, signup }) {
   return (
     <Switch>
       <Route exact path="/">
@@ -17,7 +18,11 @@ function Routes({ userInfo }) {
       </Route>
 
       <Route exact path="/login">
-        <Login />
+        <Login login={login} />
+      </Route>
+
+      <Route exact path="/signup">
+        <Signup signup={signup} />
       </Route>
 
       <SecureRoute exact path="/companies">
@@ -25,15 +30,15 @@ function Routes({ userInfo }) {
       </SecureRoute>
 
       <SecureRoute exact path="/jobs">
-        <Jobs userInfo={userInfo} />
+        <Jobs />
       </SecureRoute>
 
       <SecureRoute exact path="/companies/:handle">
-        <Company userInfo={userInfo} />
+        <Company />
       </SecureRoute>
 
       <SecureRoute exact path="/profile">
-        <Profile userInfo={userInfo} />
+        <Profile />
       </SecureRoute>
 
       <Redirect to="/" />

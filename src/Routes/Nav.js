@@ -22,7 +22,11 @@ function Nav({ logout }) {
               Log out {userInfo.first_name || userInfo.username}
             </Link>
           </>
-        : <NavLink to="/login">LogIn</NavLink>}
+        : <>
+            <NavLink to="/login">Log In</NavLink>
+            <NavLink to="/signup">Sign Up</NavLink>
+          </>
+      }
     </nav>
   )
 }

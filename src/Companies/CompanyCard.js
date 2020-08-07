@@ -10,12 +10,12 @@ function CompanyCard({company}){
   const default_logo_url = "https://pbs.twimg.com/profile_images/1110319067280269312/iEqpsbUA_400x400.png"
   return(
     <div style={{textAlign:"center", border: "solid", marginTop: 20, maxWidth: 400}}>
-    <Link style={{textDecoration: "none", color:"black"}} className="Company" to={`/companies/${handle}`}>
-      <div>{name}</div>
-      <div>{description}</div>
-      <img src={logo_url || default_logo_url}
-           style={{width:30}} alt={`logo for ${name}`}></img>
-    </Link>
+      <Link style={{textDecoration: "none", color:"black"}} className="Company" to={`/companies/${handle}`}>
+        <div>{name}</div>
+        <div>{description}</div>
+        <img src={logo_url || default_logo_url}
+            style={{width:30}} alt={`logo for ${name}`}></img>
+      </Link>
     </div>
   )
 }
