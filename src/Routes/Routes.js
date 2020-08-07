@@ -5,23 +5,37 @@ import Companies from "../Companies/Companies";
 import Company from "../Company/Company";
 import Jobs from "../Jobs/Jobs";
 import Login from "../Account/Login";
-import LogOut from "../Account/LogOut";
 import Profile from "../Account/Profile";
-
-// TODO: further study on managing access on routes
+import SecureRoute from './SecureRoute';
 
 // handles all routing for our app
 function Routes({ userInfo }) {
   return (
     <Switch>
-      <Route exact path="/companies"><Companies /></Route>
-      <Route exact path="/jobs"><Jobs userInfo={userInfo} /></Route>
-      <Route exact path="/companies/:handle"><Company userInfo={userInfo} /></Route>
-      <Route exact path="/profile"><Profile userInfo={userInfo} /></Route>
-      <Route exact path="/login"><Login /></Route>
-      <Route exact path="/logout"><LogOut /></Route>
-      <Route exact path="/"><Home /></Route>
-      {/* if no routes match exactly, redirect to home */}
+      <Route exact path="/">
+        <Home />
+      </Route>
+
+      <Route exact path="/login">
+        <Login />
+      </Route>
+
+      <SecureRoute exact path="/companies">
+        <Companies />
+      </SecureRoute>
+
+      <SecureRoute exact path="/jobs">
+        <Jobs userInfo={userInfo} />
+      </SecureRoute>
+
+      <SecureRoute exact path="/companies/:handle">
+        <Company userInfo={userInfo} />
+      </SecureRoute>
+
+      <SecureRoute exact path="/profile">
+        <Profile userInfo={userInfo} />
+      </SecureRoute>
+
       <Redirect to="/" />
     </Switch>
   );

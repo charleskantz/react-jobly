@@ -2,22 +2,22 @@ import React, { useState, useContext } from "react";
 import JoblyApi from "../api/JoblyApi"
 import AuthContext from '../AuthContext';
 import { useHistory } from "react-router-dom";
+
 /** Sign Up Form for adding a new user */
 
 // consider moving form logic up to parent
 
 function Login() {
   // set history state for potential redirect
-  let history = useHistory()
+  let history = useHistory();
 
   const [formData, setFormData] = useState({});
   const [signUpPage, setLogInOrSignUp] = useState(false);
-  const {setToken} = useContext(AuthContext)
+  const { setToken } = useContext(AuthContext)
 
   // handle changes in form to keep React happy
   const handleChange = evt => {
     const { name, value } = evt.target;
-    console.log(name,value)
     setFormData(formData => ({
       ...formData,
       [name]: value
@@ -28,7 +28,7 @@ function Login() {
   // TODO: pick better names here
   const gatherInput = evt => {
     evt.preventDefault();
-    async function registerUser(){
+    async function registerUser() {
       try {
         let userToken = await JoblyApi.register(formData);
         setToken(userToken);
@@ -43,12 +43,12 @@ function Login() {
   // log in the user, update token, redirect to Jobs page
   const handleLogIn = evt => {
     evt.preventDefault();
-    async function fetchUser(){
-      try{
-      let userToken = await JoblyApi.logIn(formData);
-      setToken(userToken);
-      history.push('/jobs');
-      }catch(err){
+    async function fetchUser() {
+      try {
+        let userToken = await JoblyApi.logIn(formData);
+        setToken(userToken);
+        history.push('/jobs');
+      } catch (err) {
         alert("INVALID LOG IN!")
       }
     }
@@ -86,7 +86,7 @@ function Login() {
         <button>Submit</button>
       </form>
     )
-  }
+  };
 
   // SIGNUP PAGE FORM, displayed when signup button is pressed
   if (signUpPage === true) {
@@ -146,12 +146,13 @@ function Login() {
           </div>
           <button id="addNewUser">Create Account</button>
         </form>
-      </div>)
-  }
+      </div>
+    )
+  };
 
   // button toggle for displaying correct form
-  const handleToggleLog = () => setLogInOrSignUp(false)
-  const handleToggleSign = () => setLogInOrSignUp(true)
+  const handleToggleLog = () => setLogInOrSignUp(false);
+  const handleToggleSign = () => setLogInOrSignUp(true);
 
   return (
     <div>

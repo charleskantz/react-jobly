@@ -1,37 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import JoblyApi from "../api/JoblyApi";
+import AuthContext from '../AuthContext';
 
 /** Form for updating the profile;
  *  requires a valid password;
  *  Username can not be updated;
  */
 
-function Profile({ userInfo, updateUser }) {
-  const [formData, setFormData] = useState(userInfo);
-  const [messages, setMessages] = useState("")
+function Profile() {
+
+  const { userInfo, setUserInfo } = useContext(AuthContext);
+
+  const [formData, setFormData] = useState({
+    first_name: userInfo.first_name || "",
+    last_name: userInfo.last_name || "",
+    email: userInfo.email || "",
+    photo_url: userInfo.photo_url || "",
+    username: userInfo.username,
+    password: "",
+  });
+  const [messages, setMessages] = useState([])
 
   const handleChange = evt => {
     const { name, value } = evt.target;
     setFormData(formData => ({
       ...formData,
-      [name]: value
+      [name]: value,
+      errors: []
     }));
   };
 
-  const submitUpdates = evt => {
+  const submitUpdates = async evt => {
     evt.preventDefault();
-    async function submitChanges(){
-      try {
-        const updatedUser = await JoblyApi.updateUser(formData);
-        setFormData(updatedUser);
-        setMessages("Update successful!")
-      }
-      catch (err) {
-        setMessages(`Update failed! ${err}`);
-        console.debug(err);
-      }
+
+    let profileData = {
+      username: formData.username,
+      first_name: formData.first_name || undefined,
+      last_name: formData.last_name || undefined,
+      email: formData.email || undefined,
+      photo_url: formData.photo_url || undefined,
+      password: formData.password
+    };
+
+    let updatedUser;
+
+    try {
+      updatedUser = await JoblyApi.updateUser(profileData);
     }
-    submitChanges();
+    catch (err) {
+      console.error(err);
+      setMessages(err);
+    }
+
+    setFormData(formData => ({
+      ...formData,
+      password: ''
+    }));
+    setMessages("Update successful!")
+    setUserInfo(updatedUser);
   }
 
 
@@ -91,6 +117,7 @@ function Profile({ userInfo, updateUser }) {
         <div>
           <label htmlFor="password">Re-enter Password: </label>
           <input
+            type="password"
             onChange={handleChange}
             name="password"
             placeholder="password"
