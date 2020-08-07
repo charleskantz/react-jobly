@@ -6,7 +6,7 @@ class JoblyApi {
 
     console.debug("API Call:", endpoint, paramsOrData, verb);
 
-    try { 
+    try {
       return (await axios({
         method: verb,
         url: `http://localhost:3001/${endpoint}`,

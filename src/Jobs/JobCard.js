@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import './JobCard.css';
-import JoblyApi from "../JoblyApi";
+import JoblyApi from "../api/JoblyApi";
 
 // todo: okay to import context here
 // todo: use API call to update userInfo instead of pushing new job to userInfo
 
 // details on a specific job, and button to apply for job
 function JobCard({
-  id, 
-  title, 
-  salary, 
-  equity, 
+  id,
+  title,
+  salary,
+  equity,
   company_handle,
   username,
   hasApplied,
@@ -53,7 +53,7 @@ function JobCard({
         ? <button className="alreadyApplied" disabled>Applied!</button>
         : <button className="buttonApply" onClick={handleApply}>Apply</button>
       }
-      
+
     </div>
   )
 }

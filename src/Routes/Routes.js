@@ -4,8 +4,8 @@ import Home from "../Home/Home";
 import Companies from "../Companies/Companies";
 import Company from "../Company/Company";
 import Jobs from "../Jobs/Jobs";
-import Login from "../Account/Login"; 
-import LogOut from "../Account/LogOut"; 
+import Login from "../Account/Login";
+import LogOut from "../Account/LogOut";
 import Profile from "../Account/Profile";
 
 // TODO: further study on managing access on routes

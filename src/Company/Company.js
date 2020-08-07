@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import JoblyApi from "../JoblyApi"
+import JoblyApi from "../api/JoblyApi"
 import JobCard from "../Jobs/JobCard";
 import AuthContext from '../AuthContext';
 
@@ -13,7 +13,7 @@ function Company(){
   const {handle} = useParams();
   const [currentCompany, setCompany] = useState(null);
   const { userInfo, setUserInfo } = useContext(AuthContext)
-  
+
   // Get list of jobs for this company from DB
   useEffect(() => {
     async function fetchCompany(){
@@ -33,7 +33,7 @@ function Company(){
           hasApplied = true;
         }
         return <JobCard
-          username={userInfo.username} 
+          username={userInfo.username}
           id={job.id}
           key={job.id}
           title={job.title}
@@ -45,7 +45,7 @@ function Company(){
         />
     })
   }}
-  
+
 
   // const renderJobCards = () => {
   //   return currentCompany.jobs.map((job) => {
@@ -56,7 +56,7 @@ function Company(){
   //     }
 
   //     return <JobCard
-  //       username={userInfo.username} 
+  //       username={userInfo.username}
   //       id={job.id}
   //       key={job.id}
   //       title={job.title}

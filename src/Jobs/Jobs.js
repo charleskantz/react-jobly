@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import JobCard from "./JobCard";
-import JoblyApi from "../JoblyApi";
+import JoblyApi from "../api/JoblyApi";
 import Search from '../Search';
 import AuthContext from '../AuthContext';
 
@@ -33,7 +33,7 @@ function Jobs() {
       }
 
       return <JobCard
-        username={userInfo.username} 
+        username={userInfo.username}
         id={job.id}
         key={job.id}
         title={job.title}

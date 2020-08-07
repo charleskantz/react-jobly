@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import JoblyApi from "../JoblyApi"
+import JoblyApi from "../api/JoblyApi"
 import AuthContext from '../AuthContext';
 import { useHistory } from "react-router-dom";
 /** Sign Up Form for adding a new user */
@@ -39,7 +39,7 @@ function Login() {
     }
     registerUser();
   }
-  
+
   // log in the user, update token, redirect to Jobs page
   const handleLogIn = evt => {
     evt.preventDefault();
@@ -167,5 +167,5 @@ export default Login;
 /** STEPS
  *  check login, if valid store in LS
  *  joblyAPI will extract from LS
- * 
+ *
  */

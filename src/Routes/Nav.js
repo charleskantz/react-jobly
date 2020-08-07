@@ -6,11 +6,11 @@ import AuthContext from '../AuthContext';
 
 // navigation at top of page
 function Nav() {
-  const { token } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
 
   return (
     <nav>
-      {token ?<nav>
+      {userInfo ?<nav>
                 <NavLink exact to="/">Home</NavLink>
                 <NavLink to="/companies">Companies</NavLink>
                 <NavLink to="/jobs">Jobs</NavLink>

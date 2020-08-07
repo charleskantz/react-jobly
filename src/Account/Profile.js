@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import JoblyApi from "../JoblyApi";
+import JoblyApi from "../api/JoblyApi";
 
-/** Form for updating the profile; 
+/** Form for updating the profile;
  *  requires a valid password;
  *  Username can not be updated;
  */
@@ -98,7 +98,7 @@ function Profile({ userInfo, updateUser }) {
             id="password"
           />
         </div>
-   
+
         <button id="updateProfile">Save Changes</button>
       </form>
       <div id="messageArea" >{messages}</div>

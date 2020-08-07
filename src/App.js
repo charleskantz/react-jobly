@@ -3,38 +3,49 @@ import Nav from "./Routes/Nav";
 import Routes from "./Routes/Routes";
 import { BrowserRouter } from 'react-router-dom';
 import AuthContext from './AuthContext';
-import { useLocalStorage, getLoggedInUser } from './hooks'
+import useLocalStorage from './hooks/useLocalStorage'
+import { decode } from 'jsonwebtoken';
+import JoblyApi from './api/JoblyApi';
 import './App.css';
 
-/**Renders Nav and Routes component; 
- * provide context of value token */
-function App() {
-  // set state for token
+// token keyname for localStorage
+export const TOKEN_STORAGE_ID = 'token';
 
-  // todo: revisit this, seems redundant
-  const [token, setToken] = useLocalStorage();
-  const possibleToken = localStorage.getItem("token");
-  const [userInfo, setUserInfo] = useState({});
+/** Jobly
+ *
+ * - userInfo: user obj from API, primary way to see if user is logged in.
+ *   Passed with Context throughout app.
+ *
+ * - token: for logged in users. Required for most API calls.
+ *   Received from localStorage if present, and synced w/useLocalStorage hook
+ */
+const App = () => {
+
+  const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+  const [userInfo, setUserInfo] = useState(null);
+
   // check if local storage already has token, update state with token
   useEffect(() => {
-    if (possibleToken) {
-      setToken(possibleToken);
-      async function getUserInfo() {
-        setUserInfo( await getLoggedInUser() );
+    async function getLoggedInUser() {
+      if (token) {
+        try {
+          const { username } = decode(token);
+          let currentUser = await JoblyApi.getUser(username);
+          setUserInfo(currentUser);
+        } catch (err) {
+          setUserInfo(null);
+        }
       }
-      getUserInfo();
     }
-  }, [setToken, possibleToken]);
-  
+    getLoggedInUser();
+  }, [token]);
 
-  // todo: either pass userInfo as prop or context, not both
-  // todo: we don't need to pass token everywhere, use userInfo
   return (
     <div className="App">
       <BrowserRouter>
-        <AuthContext.Provider value={{token, setToken, userInfo, setUserInfo}}>
+        <AuthContext.Provider value={{ userInfo, setUserInfo }}>
           <Nav />
-          <Routes userInfo={userInfo} />
+          <Routes />
         </AuthContext.Provider>
       </BrowserRouter>
     </div>
