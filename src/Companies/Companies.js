@@ -2,23 +2,30 @@ import React, { useState, useEffect } from "react";
 import JoblyApi from "../api/JoblyApi"
 import CompanyCard from "./CompanyCard";
 import Search from '../Search';
-
-// TODO: add a loading message for slowing loading
+import { useDebounce } from '../hooks/useDebounce';
 
 /* Renders a list of companies.*/
 function Companies() {
-  const [companies, setCompanies] = useState(null);
-  const [searchQuery, setSearchQuery] = useState({});
 
-  // Search for jobs. If no search query, then get all jobs,
-  // otherwise search based on search query
+  const [ companies, setCompanies ] = useState(null);
+  const [ query, setQuery ] = useState('');
+
+  const debouncedSearch = useDebounce(query, 1000);
+
   useEffect(() => {
-    async function fetchCompanies(){
-      let companiesData = await JoblyApi.request("companies", searchQuery);
-      setCompanies(companiesData.companies);
+    if (debouncedSearch) {
+      console.log("debounced", debouncedSearch);
+      search(debouncedSearch);
     }
-    fetchCompanies();
-  },[searchQuery]);
+  },[debouncedSearch]);
+
+  const search = async search => {
+    setCompanies(null);
+    console.log("search", search);
+    let companies = await JoblyApi.searchCompanies(search);
+    console.log('companies', companies);
+    setCompanies(companies);
+  }
 
   const renderCompanyCards = () => {
     return companies.map((company, i) => (
@@ -31,7 +38,7 @@ function Companies() {
 
   return (
     <div className="Companies">
-      <Search doSearch={setSearchQuery}/>
+      <Search doSearch={search} query={query} setQuery={setQuery} />
       <div className="Companies-list">
         <div className="Companies-card-area">
           {companies.length

@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-// TODO: consider keeping query in input after search
-// TODO: debouncing the function (further study)
-
-// search bar for searching jobs or companies
-function Search({ doSearch }) {
-  const [query, setQuery] = useState('');
+/** Search bar for searching jobs or companies.
+ *  Results are live with debounce effect
+ */
+function Search({ doSearch, query, setQuery }) {
 
   const handleChange = evt => {
     setQuery(evt.target.value);
@@ -13,10 +11,7 @@ function Search({ doSearch }) {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    doSearch({
-      search: query
-    });
-    setQuery('');
+    doSearch(query);
   }
 
   return (
