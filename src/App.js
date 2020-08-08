@@ -21,8 +21,9 @@ export const TOKEN_STORAGE_ID = 'token';
  */
 const App = () => {
 
-  const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
-  const [userInfo, setUserInfo] = useState(null);
+  const [ token, setToken ] = useLocalStorage(TOKEN_STORAGE_ID);
+  const [ userInfo, setUserInfo ] = useState(null);
+  const [ dataLoaded, setDataLoaded ] = useState(false);
 
   // check if local storage already has token, update state with token
   useEffect(() => {
@@ -36,7 +37,9 @@ const App = () => {
           setUserInfo(null);
         }
       }
+      setDataLoaded(true);
     }
+    setDataLoaded(false);
     getLoggedInUser();
   }, [token]);
 
@@ -68,7 +71,8 @@ const App = () => {
     }
   };
 
-  // todo: custom spinner
+  // todo: make prettier
+  if (!dataLoaded) return <h1>Loading...</h1>;
 
   return (
     <div className="App">

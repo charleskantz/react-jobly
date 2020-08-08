@@ -8,8 +8,7 @@ function Search({ doSearch }) {
   const [query, setQuery] = useState('');
 
   const handleChange = evt => {
-    const { value } = evt.target;
-    setQuery(value);
+    setQuery(evt.target.value);
   }
 
   const handleSubmit = evt => {
@@ -21,16 +20,16 @@ function Search({ doSearch }) {
   }
 
   return (
-  <form onSubmit={handleSubmit} >
-    <input
-      type="search"
-      placeholder="Search.."
-      name="search"
-      value={query}
-      onChange={handleChange}
-    />
-    <button>Search!</button>
-  </form>
+    <form onSubmit={handleSubmit} >
+      <input
+        type="search"
+        placeholder="Search..."
+        name="search"
+        value={query}
+        onChange={handleChange}
+      />
+      <button>Search!</button>
+    </form>
   )
 }
 

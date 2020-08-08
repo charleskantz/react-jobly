@@ -3,11 +3,11 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../Home/Home";
 import Companies from "../Companies/Companies";
 import Company from "../Company/Company";
-import Jobs from "../Jobs/Jobs";
 import Login from "../Account/Login";
 import Profile from "../Account/Profile";
 import SecureRoute from './SecureRoute';
 import Signup from "../Account/Signup";
+import JobList from "../Jobs/JobList";
 
 // handles all routing for our app
 function Routes({ login, signup }) {
@@ -30,7 +30,7 @@ function Routes({ login, signup }) {
       </SecureRoute>
 
       <SecureRoute exact path="/jobs">
-        <Jobs />
+        <JobList />
       </SecureRoute>
 
       <SecureRoute exact path="/companies/:handle">

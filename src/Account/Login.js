@@ -27,7 +27,6 @@ function Login({ login }) {
     evt.preventDefault();
     let result = await login(formData);
     if (result.login) {
-      console.log('yuppp')
       history.push('/jobs');
     } else {
       setFormErrors(result.err);
