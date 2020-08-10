@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 
+/** useLocalStorage -
+ *  Custom hook for access browser local storage
+ * @param {string} key
+ */
 const useLocalStorage = (key) => {
+  // getItem returns null if key doesn't exist
   const [state, setState] = useState(() => {
-    console.log('key', key)
     let value = (localStorage.getItem(key));
-    console.log('value', value)
     return value;
   });
 

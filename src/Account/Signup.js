@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+/**
+ *
+ * @param {signup} prop: handles new user signup call to DB
+ */
 function Signup({ signup }) {
 
   const history = useHistory();

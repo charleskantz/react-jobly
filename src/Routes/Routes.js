@@ -1,15 +1,19 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../Home/Home";
-import Companies from "../Companies/Companies";
-import Company from "../Company/Company";
+import CompanyList from "../Companies/CompanyList";
+import CompanyDetail from "../Companies/CompanyDetail";
 import Login from "../Account/Login";
 import Profile from "../Account/Profile";
 import SecureRoute from './SecureRoute';
 import Signup from "../Account/Signup";
 import JobList from "../Jobs/JobList";
 
-// handles all routing for our app
+/** Routes - Handles URL routing.
+ *  SecureRoute is HOC that checks for logged in user before allowing access
+ * @param {login} prop: handles user login
+ * @param {signup} prop: handles user signup
+ */
 function Routes({ login, signup }) {
   return (
     <Switch>
@@ -26,7 +30,7 @@ function Routes({ login, signup }) {
       </Route>
 
       <SecureRoute exact path="/companies">
-        <Companies />
+        <CompanyList />
       </SecureRoute>
 
       <SecureRoute exact path="/jobs">
@@ -34,7 +38,7 @@ function Routes({ login, signup }) {
       </SecureRoute>
 
       <SecureRoute exact path="/companies/:handle">
-        <Company />
+        <CompanyDetail />
       </SecureRoute>
 
       <SecureRoute exact path="/profile">

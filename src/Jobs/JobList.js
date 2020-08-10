@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import JoblyApi from '../api/JoblyApi';
 import JobCardList from './JobCardList';
 import Search from '../Search';
-import { useDebounce } from '../hooks/useDebounce';
+import useDebounce from '../hooks/useDebounce';
 
 /* Renders a list of jobs.*/
 function JobList() {

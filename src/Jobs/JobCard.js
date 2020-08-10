@@ -1,18 +1,18 @@
 import React from "react";
 import './JobCard.css';
 
-// details on a specific job, and button to apply for job
-function JobCard({
-  id,
-  title,
-  salary,
-  equity,
-  hasApplied,
-  apply
-}){
+/** JobCard - display component for showing job details.
+ *  Can apply for jobs.
+ * @param {job} prop: job details
+ * @param {apply} prop: handles applying to a job
+ */
+function JobCard({ job, apply }){
+
+  // separate details for easier reading
+  const { id, title, salary, equity, hasApplied } = job;
+
   // apply for job
-  function handleApply(evt) {
-    console.log("handle apply", id);
+  function handleApply() {
     apply(id);
   }
 
@@ -32,4 +32,4 @@ function JobCard({
   )
 }
 
-export default JobCard
+export default JobCard;

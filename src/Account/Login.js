@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-/** Sign Up Form for adding a new user */
-
+/** Login - Form for user to login
+ *
+ * @param {login} prop: handles call DB to attempt login
+ */
 function Login({ login }) {
   // set history state for potential redirect
   let history = useHistory();
@@ -11,9 +13,9 @@ function Login({ login }) {
     username: "",
     password: "",
   });
+  // for any potential login error
   const [formErrors, setFormErrors] = useState([]);
 
-  // handle changes in form to keep React happy
   const handleChange = evt => {
     const { name, value } = evt.target;
     setFormData(formData => ({
@@ -22,7 +24,7 @@ function Login({ login }) {
     }));
   };
 
-  // log in the user, update token, redirect to Jobs page
+  // log in the user, update token, redirect to Jobs page, or display login error
   const handleLogIn = async evt => {
     evt.preventDefault();
     let result = await login(formData);

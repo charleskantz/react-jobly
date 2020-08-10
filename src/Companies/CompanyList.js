@@ -2,35 +2,26 @@ import React, { useState, useEffect } from "react";
 import JoblyApi from "../api/JoblyApi"
 import CompanyCard from "./CompanyCard";
 import Search from '../Search';
-import { useDebounce } from '../hooks/useDebounce';
+import useDebounce from '../hooks/useDebounce';
 
-/* Renders a list of companies.*/
-function Companies() {
+/** Companies - Renders a list of companies.
+ *   - CompanyList > CompanyCard > Company
+ */
+function CompanyList() {
 
-  const [ companies, setCompanies ] = useState(null);
-  const [ query, setQuery ] = useState('');
+  const [companies, setCompanies] = useState(null);
+  const [query, setQuery] = useState('');
 
+  // debounce search query for automatic retrieval
   const debouncedSearch = useDebounce(query, 1000);
 
   useEffect(() => {
-    if (debouncedSearch) {
-      console.log("debounced", debouncedSearch);
-      search(debouncedSearch);
-    }
-  },[debouncedSearch]);
+    search(debouncedSearch);
+  }, [debouncedSearch]);
 
   const search = async search => {
-    setCompanies(null);
-    console.log("search", search);
     let companies = await JoblyApi.searchCompanies(search);
-    console.log('companies', companies);
     setCompanies(companies);
-  }
-
-  const renderCompanyCards = () => {
-    return companies.map((company, i) => (
-      <CompanyCard key={i} company={company} />
-    ))
   }
 
   // todo: custom spinner
@@ -42,7 +33,7 @@ function Companies() {
       <div className="Companies-list">
         <div className="Companies-card-area">
           {companies.length
-            ? renderCompanyCards()
+            ? companies.map((company, i) => (<CompanyCard key={i} company={company} />))
             : <p>Sorry, no results were found!</p>}
         </div>
       </div>
@@ -50,4 +41,4 @@ function Companies() {
   );
 }
 
-export default Companies;
+export default CompanyList;

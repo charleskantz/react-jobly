@@ -11,19 +11,13 @@ import './App.css';
 // token keyname for localStorage
 export const TOKEN_STORAGE_ID = 'token';
 
-/** Jobly
- *
- * - userInfo: user obj from API, primary way to see if user is logged in.
- *   Passed with Context throughout app.
- *
- * - token: for logged in users. Required for most API calls.
- *   Received from localStorage if present, and synced w/useLocalStorage hook
+/** Jobly - App for finding and applying for jobs!
  */
 const App = () => {
 
-  const [ token, setToken ] = useLocalStorage(TOKEN_STORAGE_ID);
-  const [ userInfo, setUserInfo ] = useState(null);
-  const [ dataLoaded, setDataLoaded ] = useState(false);
+  const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+  const [userInfo, setUserInfo] = useState(null);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   // check if local storage already has token, update state with token
   useEffect(() => {

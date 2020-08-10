@@ -4,16 +4,14 @@ import JoblyApi from "../api/JoblyApi"
 import JobCardList from "../Jobs/JobCardList";
 import AuthContext from '../AuthContext';
 
-// TODO: add loading logic for slower loading
-// TODO: fix up CSS class names, place in separate file if necessary
-// todo: ensure we're authorizing users to access
-
-// company detail page with list of jobs for this company
-function Company(){
+/** Company - Shows both company details and a list of available
+ *  jobs at that company.
+ */
+function CompanyDetail(){
 
   const { handle } = useParams();
   const [ currentCompany, setCompany ] = useState(null);
-  const { userInfo, setUserInfo } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
 
   // Get list of jobs for this company from DB
   useEffect(() => {
@@ -65,6 +63,6 @@ function Company(){
   )
 }
 
-export default Company;
+export default CompanyDetail;
 
 

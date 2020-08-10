@@ -2,11 +2,10 @@ import React, { useState, useContext } from "react";
 import JoblyApi from "../api/JoblyApi";
 import AuthContext from '../AuthContext';
 
-/** Form for updating the profile;
+/** Profile - Form for updating the profile;
  *  requires a valid password;
  *  Username can not be updated;
  */
-
 function Profile() {
 
   const { userInfo, setUserInfo } = useContext(AuthContext);
@@ -19,6 +18,8 @@ function Profile() {
     username: userInfo.username,
     password: "",
   });
+
+  // DB response (error or success) is stored here
   const [messages, setMessages] = useState([])
 
   const handleChange = evt => {
