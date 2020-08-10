@@ -61,6 +61,7 @@ function Profile() {
     setUserInfo(updatedUser);
   }
 
+  console.log('formData.password', formData.password);
 
   return (
     <div>
@@ -126,8 +127,7 @@ function Profile() {
             id="password"
           />
         </div>
-
-        <button id="updateProfile">Save Changes</button>
+        <button disabled={!formData.password} id="updateProfile">Save Changes</button>
       </form>
       <div id="messageArea" >{messages}</div>
     </div>
