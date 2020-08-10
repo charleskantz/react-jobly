@@ -6,7 +6,6 @@ import AuthContext from './AuthContext';
 import useLocalStorage from './hooks/useLocalStorage'
 import { decode } from 'jsonwebtoken';
 import JoblyApi from './api/JoblyApi';
-import './App.css';
 
 // token keyname for localStorage
 export const TOKEN_STORAGE_ID = 'token';

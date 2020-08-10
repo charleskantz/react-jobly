@@ -1,5 +1,4 @@
 import React from "react";
-import './JobCard.css';
 
 /** JobCard - display component for showing job details.
  *  Can apply for jobs.
