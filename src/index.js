@@ -10,6 +10,7 @@ ReactDOM.render(
       styles={css`
         body {
           background-color: #f2f4f7;
+          font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
         }
       `}
     />

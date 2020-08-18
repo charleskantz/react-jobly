@@ -1,4 +1,6 @@
 import React from "react";
+import { Card } from '../Common/Card';
+import { Button } from '../Common/Button';
 
 /** JobCard - display component for showing job details.
  *  Can apply for jobs.
@@ -8,7 +10,7 @@ import React from "react";
 function JobCard({ job, apply }){
 
   // separate details for easier reading
-  const { id, title, salary, equity, hasApplied } = job;
+  const { id, title, salary, equity, state } = job;
 
   // apply for job
   function handleApply() {
@@ -16,18 +18,18 @@ function JobCard({ job, apply }){
   }
 
   return (
-    <div className="JobCard" id={id}>
+    <Card>
       <h3>{title}</h3>
       <p>Salary: ${salary}</p>
       <p>Equity: {equity * 100}%</p>
-      <button
-        className={hasApplied ? "alreadyApplied" : "buttonApply"}
-        disabled={hasApplied}
+      <Button
+        className={state ? "alreadyApplied" : "buttonApply"}
+        disabled={state}
         onClick={handleApply}
       >
-        {hasApplied ? "Applied!" : "Apply"}
-      </button>
-    </div>
+        {state ? "Applied!" : "Apply"}
+      </Button>
+    </Card>
   )
 }
 

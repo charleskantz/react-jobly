@@ -4,7 +4,7 @@ import CompanyCard from "./CompanyCard";
 import Search from '../Search';
 import useDebounce from '../hooks/useDebounce';
 import { CARDS_PER_PAGE } from '../Jobs/JobCardList';
-import Pagination from "../Nav and Routes/Pagination";
+import Pagination from "../NavRoutes/Pagination";
 
 /** Companies - Renders a list of companies.
  *   - CompanyList > CompanyCard > Company

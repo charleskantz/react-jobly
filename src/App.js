@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Nav from "./Routes/Nav";
-import Routes from "./Routes/Routes";
+import Nav from "./NavRoutes/Nav";
+import Routes from "./NavRoutes/Routes";
 import { BrowserRouter } from 'react-router-dom';
 import AuthContext from './AuthContext';
 import useLocalStorage from './hooks/useLocalStorage'

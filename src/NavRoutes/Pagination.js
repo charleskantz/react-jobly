@@ -1,4 +1,11 @@
 import React from 'react';
+import { Button } from '../Common/Button';
+import styled from '@emotion/styled';
+
+const Nav = styled.nav`
+  display: flex;
+  justify-content: center;
+`;
 
 /** Pagination - nav component to display cards in digestible chunks
  *
@@ -17,27 +24,38 @@ function Pagination({ cardsPerPage, totalCards, paginate, currentPage }) {
   }
 
   return (
-    <nav>
+    <Nav>
       <ul>
-        <li>
-          <button disabled={currentPage === 1} onClick={() => paginate(currentPage - 1)} >
+        <li style={{display: "inline"}}>
+          <Button
+            disabled={currentPage === 1}
+            onClick={() => paginate(currentPage - 1)}
+            width="48px"
+          >
             {"<"}
-          </button>
+          </Button>
         </li>
         {pageNumbers.map(number => (
           <li key={number} style={{display: "inline"}}>
-            <button onClick={() => paginate(number)} >
+            <Button
+              onClick={() => paginate(number)}
+              width="48px"
+            >
               {number === currentPage? `${number}*` : number}
-            </button>
+            </Button>
           </li>
         ))}
-        <li>
-          <button disabled={currentPage === pageNumbers.length} onClick={() => paginate(currentPage + 1)} >
+        <li style={{display: "inline"}}>
+          <Button
+            disabled={currentPage === pageNumbers.length}
+            onClick={() => paginate(currentPage + 1)}
+            width="48px"
+          >
             {">"}
-          </button>
+          </Button>
         </li>
       </ul>
-    </nav>
+    </Nav>
   )
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import JobCard from "./JobCard";
-import Pagination from "../Nav and Routes/Pagination";
+import Pagination from "../NavRoutes/Pagination";
 
 export const CARDS_PER_PAGE = 10;
 

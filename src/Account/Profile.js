@@ -1,6 +1,16 @@
 import React, { useState, useContext } from "react";
 import JoblyApi from "../api/JoblyApi";
 import AuthContext from '../AuthContext';
+import { Card } from '../Common/Card';
+import { Input } from '../Common/Input';
+import { Button } from '../Common/Button';
+import { Heading } from '../Common/Type';
+import { Label } from '../Common/Label';
+import styled from '@emotion/styled';
+
+const Container = styled.div`
+  margin-right: 16px;
+`;
 
 /** Profile - Form for updating the profile;
  *  requires a valid password;
@@ -61,64 +71,52 @@ function Profile() {
     setUserInfo(updatedUser);
   }
 
-  console.log('formData.password', formData.password);
-
   return (
-    <div>
-      <h1> Profile </h1>
-      <form className="ProfileForm" onSubmit={submitUpdates}>
-        <div>
-          <label htmlFor="username">Username: </label>
-          <input disabled
+    <Card column>
+      <Heading>Profile</Heading>
+      <Container>
+        <form onSubmit={submitUpdates}>
+          <Label htmlFor="username">Username: </Label>
+          <Input disabled
             name="username"
             placeholder="username"
             value={formData.username}
             id="username"
           />
-        </div>
-        <div>
-          <label htmlFor="first_name">First Name: </label>
-          <input
+          <Label htmlFor="first_name">First Name: </Label>
+          <Input
             onChange={handleChange}
             name="first_name"
             placeholder="first_name"
             value={formData.first_name}
             id="firstName"
           />
-        </div>
-        <div>
-          <label htmlFor="last_name">Last Name: </label>
-          <input
+          <Label htmlFor="last_name">Last Name: </Label>
+          <Input
             onChange={handleChange}
             name="last_name"
             placeholder="last_name"
             id="lastName"
             value={formData.last_name}
           />
-        </div>
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input
+          <Label htmlFor="email">Email: </Label>
+          <Input
             onChange={handleChange}
             name="email"
             placeholder="email"
             value={formData.email}
             id="email"
           />
-        </div>
-        <div>
-          <label htmlFor="photo_url">Photo URL: </label>
-          <input
+          <Label htmlFor="photo_url">Photo URL: </Label>
+          <Input
             onChange={handleChange}
             name="photo_url"
             placeholder="photoUrl"
             value={formData.photo_url}
             id="photoUrl"
           />
-        </div>
-        <div>
-          <label htmlFor="password">Re-enter Password: </label>
-          <input
+          <Label htmlFor="password">Re-enter Password: </Label>
+          <Input
             type="password"
             onChange={handleChange}
             name="password"
@@ -126,11 +124,11 @@ function Profile() {
             value={formData.password}
             id="password"
           />
-        </div>
-        <button disabled={!formData.password} id="updateProfile">Save Changes</button>
-      </form>
+          <Button margin="1rem 0 0" disabled={!formData.password} id="updateProfile">Save Changes</Button>
+        </form>
+      </Container>
       <div id="messageArea" >{messages}</div>
-    </div>
+    </Card>
   );
 }
 
