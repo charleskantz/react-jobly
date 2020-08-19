@@ -10,7 +10,7 @@ import { Button } from '../Common/Button';
 function JobCard({ job, apply }){
 
   // separate details for easier reading
-  const { id, title, salary, equity, state } = job;
+  const { id, title, salary, equity, state, company_name } = job;
 
   // apply for job
   function handleApply() {
@@ -18,10 +18,11 @@ function JobCard({ job, apply }){
   }
 
   return (
-    <Card>
+    <Card column>
       <h3>{title}</h3>
       <p>Salary: ${salary}</p>
-      <p>Equity: {equity * 100}%</p>
+      <p>{company_name}</p>
+      <p>Equity: {parseInt(equity * 100)}%</p>
       <Button
         className={state ? "alreadyApplied" : "buttonApply"}
         disabled={state}

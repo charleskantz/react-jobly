@@ -16,7 +16,7 @@ export const Body = styled.p`
   color: #050c26;
   line-height: 1.25;
   font-size: 14px;
-  padding-bottom: 4px;
+  padding-top: 3px;
   text-rendering: optimizeLegibility;
   letter-spacing: .3px;
 `;
@@ -28,5 +28,6 @@ export const LightMiceType = styled.p`
   line-height: 13.75px;
   text-rendering: optimizeLegibility;
   letter-spacing: .3px;
+  padding-top: 5px;
 `;
 
