@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from '../AuthContext';
 import styled from '@emotion/styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMicroblog } from '@fortawesome/free-brands-svg-icons';
 
 const NavBar = styled.nav`
   background-color: #fff;
@@ -10,8 +12,27 @@ const NavBar = styled.nav`
   justify-content: space-between;
 `;
 
+const Brand = styled.span`
+  display: flex;
+  color: rgb(15,111,255);
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+  align-items: center;
+  padding: 0 .9375rem;
+  cursor: pointer;
+
+  & > p {
+    padding-left: 8px;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+`;
+
 const StyledNav = styled.ul`
-  padding: 0 2rem;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -34,6 +55,8 @@ const StyledNav = styled.ul`
       color: grey;
     }
   }
+
+
 `;
 
 
@@ -51,10 +74,16 @@ function Nav({ logout }) {
    */
   return (
     <NavBar>
+      <NavLink exact to="/">
+        <Brand>
+          <FontAwesomeIcon icon={faMicroblog} size="2x" />
+          <p>Jobly</p>
+        </Brand>
+      </NavLink>
       <StyledNav>
         {userInfo
           ? <>
-              <NavLink exact to="/">Home</NavLink>
+
               <NavLink to="/companies">Companies</NavLink>
               <NavLink to="/jobs">Jobs</NavLink>
               <NavLink to="/profile">Profile</NavLink>

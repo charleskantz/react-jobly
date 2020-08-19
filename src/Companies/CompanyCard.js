@@ -4,7 +4,8 @@ import { Card } from '../Common/Card';
 import { Image } from '../Common/Image';
 import { Heading, Body, LightMiceType } from '../Common/Type';
 import styled from '@emotion/styled';
-import { Button } from "../Common/Button";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBriefcase, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 const DetailsDiv = styled.div`
   margin-left: 16px;
@@ -90,11 +91,15 @@ function CompanyCard({ company }) {
         <DetailsDiv>
           <Heading>{name}</Heading>
           <Body>{description}</Body>
-          <LightMiceType>{num_employees} EMPLOYEES</LightMiceType>
+          <LightMiceType>
+            <FontAwesomeIcon icon={faUsers} /> {num_employees} EMPLOYEES
+          </LightMiceType>
         </DetailsDiv>
       </Container>
       <JobsCTA>
-        <Body>{job_count} Jobs Available</Body>
+        <Body>
+          <FontAwesomeIcon icon={faBriefcase} /> {job_count} Jobs Available
+        </Body>
         <CompanyLink to={`/companies/${handle}`}>See Jobs</CompanyLink>
       </JobsCTA>
     </Card>
