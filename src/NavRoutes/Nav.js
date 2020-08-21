@@ -2,37 +2,23 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from '../AuthContext';
 import styled from '@emotion/styled';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicroblog } from '@fortawesome/free-brands-svg-icons';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import IconSpan from '../Common/IconSpan';
 
 const NavBar = styled.nav`
   background-color: #fff;
   border-bottom: .0625rem solid rgba(33,37,44,.1);
   display: flex;
   justify-content: space-between;
-`;
-
-const Brand = styled.span`
-  display: flex;
-  color: rgb(15,111,255);
-  font-weight: 500;
-  text-rendering: optimizeLegibility;
-  align-items: center;
-  padding: 0 .9375rem;
-  cursor: pointer;
-
-  & > p {
-    padding-left: 8px;
-    display: inline-block;
+  & > a {
+    display: flex;
     text-decoration: none;
-  }
-
-  &:hover {
-    background-color: #f9f9f9;
+    padding: 0 .9375rem;
   }
 `;
 
-const StyledNav = styled.ul`
+const StyledNavItems = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -55,11 +41,7 @@ const StyledNav = styled.ul`
       color: grey;
     }
   }
-
-
 `;
-
-
 
 /** Nav - Top level nav
  *
@@ -75,12 +57,9 @@ function Nav({ logout }) {
   return (
     <NavBar>
       <NavLink exact to="/">
-        <Brand>
-          <FontAwesomeIcon icon={faMicroblog} size="2x" />
-          <p>Jobly</p>
-        </Brand>
+        <IconSpan iconSize="2x" text="Jobly" color="blue" image={faMicroblog} />
       </NavLink>
-      <StyledNav>
+      <StyledNavItems>
         {userInfo
           ? <>
 
@@ -88,7 +67,7 @@ function Nav({ logout }) {
               <NavLink to="/jobs">Jobs</NavLink>
               <NavLink to="/profile">Profile</NavLink>
               <Link className="nav-link" to="/" onClick={logout}>
-                Log out {userInfo.first_name || userInfo.username}
+                <IconSpan image={userInfo.photo_url || faUserCircle} iconSize="2x" size="36" text="Log Out" />
               </Link>
             </>
           : <>
@@ -96,7 +75,7 @@ function Nav({ logout }) {
               <NavLink to="/signup">Sign Up</NavLink>
             </>
         }
-      </StyledNav>
+      </StyledNavItems>
     </NavBar>
   )
 }

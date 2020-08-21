@@ -2,19 +2,19 @@ import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import AuthContext from '../AuthContext';
 
-/** SecureRoute - HOC for protecting routes.
- *  Checks for logged in user, if no user is logged in
- *  they will be redirected to home.
+/** OpenRoute - HOC for better UX
+ *  Checks for logged in user, if user is logged in
+ *  they will be redirected to /companies.
  *  @param {exact} exact: toggles exact route matching
  *  @param {string} path: path for route
  *  @param {React.FC} child: renders child component
  */
-function SecureRoute({ exact, path, children }) {
+function OpenRoute({ exact, path, children }) {
 
   const { userInfo } = useContext(AuthContext);
 
-  if (!userInfo) {
-    return <Redirect to="/login" />;
+  if (userInfo) {
+    return <Redirect to="/companies" />;
   }
 
   return (
@@ -24,4 +24,4 @@ function SecureRoute({ exact, path, children }) {
   )
 }
 
-export default SecureRoute;
+export default OpenRoute;

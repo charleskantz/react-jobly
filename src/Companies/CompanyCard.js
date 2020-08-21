@@ -66,8 +66,6 @@ const CompanyLink = styled(Link)`
   }
 `;
 
-// TODO: move CSS to separate file, and clean up class names to match component
-
 /** CompanyCard - display component with company details
  *
  * @param {company} prop: company details
@@ -77,14 +75,12 @@ function CompanyCard({ company }) {
   // separate details for easier reading
   const { handle, name, description, num_employees, logo_url, job_count } = company;
 
-  // TODO: make this an import
-  const default_logo_url = "https://pbs.twimg.com/profile_images/1110319067280269312/iEqpsbUA_400x400.png"
-
   return (
     <Card column width="600px">
       <Container>
         <Image
-          src={logo_url || default_logo_url}
+          src={logo_url}
+          size={72}
           alt={`logo for ${name}`}
         >
         </Image>

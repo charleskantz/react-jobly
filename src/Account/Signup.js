@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 /**
  *
- * @param {signup} prop: handles new user signup call to DB
+ * @param {Function} signup: handles new user signup call to DB
  */
 function Signup({ signup }) {
 

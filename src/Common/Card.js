@@ -5,7 +5,8 @@ import styled from '@emotion/styled';
  */
 
 export const Card = styled.div`
-  background-color: white;
+  background-color: ${props =>
+    props.transparent ? "transparent" : "white"};
   border: 1px solid rgb(228, 231, 240);
   border-radius: 4px;
   width: ${props =>

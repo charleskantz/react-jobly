@@ -6,13 +6,15 @@ import CompanyDetail from "../Companies/CompanyDetail";
 import Login from "../Account/Login";
 import Profile from "../Account/Profile";
 import SecureRoute from './SecureRoute';
+import OpenRoute from './OpenRoute';
 import Signup from "../Account/Signup";
 import JobList from "../Jobs/JobList";
 
 /** Routes - Handles URL routing.
+ *  OpenRoute is HOC that redirects logged in users for better UX
  *  SecureRoute is HOC that checks for logged in user before allowing access
- * @param {login} prop: handles user login
- * @param {signup} prop: handles user signup
+ * @param {Function} login: handles user login
+ * @param {Function} signup: handles user signup
  */
 function Routes({ login, signup }) {
   return (
@@ -21,13 +23,13 @@ function Routes({ login, signup }) {
         <Home />
       </Route>
 
-      <Route exact path="/login">
+      <OpenRoute exact path="/login">
         <Login login={login} />
-      </Route>
+      </OpenRoute>
 
-      <Route exact path="/signup">
+      <OpenRoute exact path="/signup">
         <Signup signup={signup} />
-      </Route>
+      </OpenRoute>
 
       <SecureRoute exact path="/companies">
         <CompanyList />

@@ -6,6 +6,7 @@ import AuthContext from './AuthContext';
 import useLocalStorage from './hooks/useLocalStorage'
 import { decode } from 'jsonwebtoken';
 import JoblyApi from './api/JoblyApi';
+import Loading from './Common/Loading';
 
 // token keyname for localStorage
 export const TOKEN_STORAGE_ID = 'token';
@@ -64,8 +65,7 @@ const App = () => {
     }
   };
 
-  // todo: make prettier
-  if (!dataLoaded) return <h1>Loading...</h1>;
+  if (!dataLoaded) return <Loading />;
 
   return (
     <div className="App">

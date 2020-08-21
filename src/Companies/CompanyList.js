@@ -5,6 +5,7 @@ import Search from '../Search';
 import useDebounce from '../hooks/useDebounce';
 import { CARDS_PER_PAGE } from '../Jobs/JobCardList';
 import Pagination from "../NavRoutes/Pagination";
+import Loading from "../Common/Loading";
 
 /** Companies - Renders a list of companies.
  *   - CompanyList > CompanyCard > Company
@@ -27,8 +28,7 @@ function CompanyList() {
     setCompanies(companies);
   }
 
-  // todo: custom spinner
-  if (!companies) return <p>Loading...</p>;
+  if (!companies) return <Loading />;
 
   // pagination data
   const idxLastPost = currentPage * CARDS_PER_PAGE;

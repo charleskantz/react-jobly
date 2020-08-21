@@ -6,11 +6,8 @@ import { Input } from '../Common/Input';
 import { Button } from '../Common/Button';
 import { Heading } from '../Common/Type';
 import { Label } from '../Common/Label';
-import styled from '@emotion/styled';
-
-const Container = styled.div`
-  margin-right: 16px;
-`;
+import UserCard from "./UserCard";
+import { Div } from "../Common/Div";
 
 /** Profile - Form for updating the profile;
  *  requires a valid password;
@@ -19,6 +16,9 @@ const Container = styled.div`
 function Profile() {
 
   const { userInfo, setUserInfo } = useContext(AuthContext);
+
+  // save current job info so data persists when updating userInfo
+  const jobs = userInfo.jobs;
 
   const [formData, setFormData] = useState({
     first_name: userInfo.first_name || "",
@@ -68,67 +68,76 @@ function Profile() {
       password: ''
     }));
     setMessages("Update successful!")
-    setUserInfo(updatedUser);
+    setUserInfo({...updatedUser, jobs});
   }
 
   return (
-    <Card column>
-      <Heading>Profile</Heading>
-      <Container>
-        <form onSubmit={submitUpdates}>
-          <Label htmlFor="username">Username: </Label>
-          <Input disabled
-            name="username"
-            placeholder="username"
-            value={formData.username}
-            id="username"
-          />
-          <Label htmlFor="first_name">First Name: </Label>
-          <Input
-            onChange={handleChange}
-            name="first_name"
-            placeholder="first_name"
-            value={formData.first_name}
-            id="firstName"
-          />
-          <Label htmlFor="last_name">Last Name: </Label>
-          <Input
-            onChange={handleChange}
-            name="last_name"
-            placeholder="last_name"
-            id="lastName"
-            value={formData.last_name}
-          />
-          <Label htmlFor="email">Email: </Label>
-          <Input
-            onChange={handleChange}
-            name="email"
-            placeholder="email"
-            value={formData.email}
-            id="email"
-          />
-          <Label htmlFor="photo_url">Photo URL: </Label>
-          <Input
-            onChange={handleChange}
-            name="photo_url"
-            placeholder="photoUrl"
-            value={formData.photo_url}
-            id="photoUrl"
-          />
-          <Label htmlFor="password">Re-enter Password: </Label>
-          <Input
-            type="password"
-            onChange={handleChange}
-            name="password"
-            placeholder="password"
-            value={formData.password}
-            id="password"
-          />
-          <Button margin="1rem 0 0" disabled={!formData.password} id="updateProfile">Save Changes</Button>
-        </form>
-      </Container>
-      <div id="messageArea" >{messages}</div>
-    </Card>
+    <>
+      <UserCard userInfo={userInfo} />
+      <Card column>
+        <Heading>Edit Profile</Heading>
+        <Div margin="0 16px 0 0">
+          <form onSubmit={submitUpdates}>
+            <Label htmlFor="username">Username: </Label>
+            <Input disabled
+              name="username"
+              placeholder="username"
+              value={formData.username}
+              autoComplete="username"
+            />
+            <Label htmlFor="first_name">First Name: </Label>
+            <Input
+              onChange={handleChange}
+              name="first_name"
+              placeholder="first_name"
+              value={formData.first_name}
+              autoComplete="given-name"
+            />
+            <Label htmlFor="last_name">Last Name: </Label>
+            <Input
+              onChange={handleChange}
+              name="last_name"
+              placeholder="last_name"
+              autoComplete="family-name"
+              value={formData.last_name}
+            />
+            <Label htmlFor="email">Email: </Label>
+            <Input
+              onChange={handleChange}
+              name="email"
+              placeholder="email"
+              value={formData.email}
+              autoComplete="email"
+            />
+            <Label htmlFor="photo_url">Photo URL: </Label>
+            <Input
+              onChange={handleChange}
+              name="photo_url"
+              placeholder="photoUrl"
+              value={formData.photo_url}
+              autoComplete="photo"
+            />
+            <Label htmlFor="password">Re-enter Password: </Label>
+            <Input
+              type="password"
+              onChange={handleChange}
+              name="password"
+              placeholder="password"
+              value={formData.password}
+              autoComplete="current-password"
+            />
+            <Div margin="1rem 0 0" display="flex">
+              <Button disabled={!formData.password} id="updateProfile">
+                Save Changes
+              </Button>
+              <Div margin="0 0 0 1rem" display="flex" align="center">
+                {messages}
+              </Div>
+            </Div>
+          </form>
+        </Div>
+      </Card>
+    </>
   );
 }
 

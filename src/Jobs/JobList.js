@@ -3,6 +3,7 @@ import JoblyApi from '../api/JoblyApi';
 import JobCardList from './JobCardList';
 import Search from '../Search';
 import useDebounce from '../hooks/useDebounce';
+import Loading from '../Common/Loading';
 
 /* Renders a list of jobs.*/
 function JobList() {
@@ -29,8 +30,7 @@ function JobList() {
     ))
   }
 
-  // todo: better loading style
-  if (!jobs) return <h1>Loading...</h1>;
+  if (!jobs) return <Loading />;
 
   return (
     <>

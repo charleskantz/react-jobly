@@ -2,6 +2,8 @@ import React from "react";
 import { Card } from '../Common/Card';
 import { Button } from '../Common/Button';
 
+// todo: style nicely
+
 /** JobCard - display component for showing job details.
  *  Can apply for jobs.
  * @param {job} prop: job details
