@@ -46,10 +46,11 @@ const App = () => {
   // sign up for account
   const signup = async (signupData) => {
     try {
-      let token = await JoblyApi.signup(signupData);
+      let token = await JoblyApi.register(signupData);
       setToken(token);
       return { login: true };
     } catch (err) {
+      console.log('signup err', err);
       return { login: false, err };
     }
   };

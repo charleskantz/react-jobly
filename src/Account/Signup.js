@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Card } from "../Common/Card";
+import { Label } from "../Common/Label";
+import { Input } from "../Common/Input";
+import { Heading, LightMiceType } from '../Common/Type';
+import { Div } from '../Common/Div';
+import { Button } from '../Common/Button';
 
 /**
  *
@@ -11,9 +17,10 @@ function Signup({ signup }) {
   const [ formData, setFormData ] = useState({
 		username: "",
 		password: "",
+		email: "",
 		first_name: "",
 		last_name: "",
-		email: "",
+	  photo_url: "",
   });
   const [ formErrors, setFormErrors ] = useState([]);
 
@@ -23,6 +30,7 @@ function Signup({ signup }) {
     if (result.login) {
       history.push("/companies");
     } else {
+      console.log("err", result.err)
       setFormErrors(result.err);
     }
   };
@@ -30,71 +38,72 @@ function Signup({ signup }) {
   const handleChange = evt => {
 		const { name, value } = evt.target;
 		setFormData(data => ({ ...data, [name]: value }));
-	};
+  };
+
+  const submitButtonActive = formData.username && formData.password;
 
   return (
-    <div>
-      <form className="SignUpForm" onSubmit={handleSignup}>
-        <div>
-          <label htmlFor="username">Username: </label>
-          <input
+    <Card column>
+      <Heading>
+        Sign Up
+      </Heading>
+      <LightMiceType>Fields with * are required.</LightMiceType>
+      <Div margin="0 16px 0 0">
+        <form onSubmit={handleSignup}>
+          <Label htmlFor="username">Username*</Label>
+          <Input
             onChange={handleChange}
             name="username"
-            placeholder="username"
             value={formData.username}
-            id="username"
+            autoComplete="username"
           />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
+          <Label htmlFor="password">Password*</Label>
+          <Input
             onChange={handleChange}
             type="password"
             name="password"
-            placeholder="password"
             value={formData.password}
-            id="password"
+            autoComplete="new-password"
           />
-        </div>
-        <div>
-          <label htmlFor="first_name">First Name: </label>
-          <input
-            onChange={handleChange}
-            name="first_name"
-            placeholder="firstName"
-            value={formData.first_name}
-            id="firstName"
-          />
-        </div>
-        <div>
-          <label htmlFor="last_name">Last Name: </label>
-          <input
-            onChange={handleChange}
-            name="last_name"
-            placeholder="lastName"
-            value={formData.last_name}
-            id="lastName"
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input
+          <Label htmlFor="email">Email</Label>
+          <Input
             onChange={handleChange}
             name="email"
-            placeholder="email"
             value={formData.email}
-            id="email"
+            autoComplete="email"
           />
-        </div>
-
-        {formErrors.length
-          ? <p>{formErrors}</p>
-          : null
-        }
-
-        <button id="addNewUser">Create Account</button>
-      </form>
-    </div>
+          <Label htmlFor="first_name">First Name</Label>
+          <Input
+            onChange={handleChange}
+            name="first_name"
+            value={formData.first_name}
+            autoComplete="given-name"
+          />
+          <Label htmlFor="last_name">Last Name</Label>
+          <Input
+            onChange={handleChange}
+            name="last_name"
+            value={formData.last_name}
+            autoComplete="family-name"
+          />
+          <Label htmlFor="photo_url">URL for Photo</Label>
+          <Input
+            onChange={handleChange}
+            name="photo_url"
+            value={formData.photo_url}
+            autoComplete="photo"
+          />
+          <Div margin="1rem 0 0" display="flex">
+            <Button disabled={!submitButtonActive}>
+              Sign Up
+            </Button>
+            <Div margin="0 0 0 1rem" display="flex" align="center">
+              {formErrors}
+            </Div>
+          </Div>
+        </form>
+      </Div>
+    </Card>
   )
 }
 

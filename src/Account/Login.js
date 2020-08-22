@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Card } from "../Common/Card";
+import { Label } from "../Common/Label";
+import { Input } from "../Common/Input";
+import { Heading } from '../Common/Type';
+import { Div } from '../Common/Div';
+import { Button } from '../Common/Button';
 
 /** Login - Form for user to login
  *
@@ -37,37 +43,40 @@ function Login({ login }) {
 
 
   return (
-    <div>
-      <form className="SignUpForm" onSubmit={handleLogIn}>
-        <div>
-          <label htmlFor="username">Username: </label>
-          <input
+    <Card column>
+      <Heading>
+        Log In
+      </Heading>
+      <Div margin="0 16px 0 0">
+        <form onSubmit={handleLogIn}>
+          <Label htmlFor="username">Username: </Label>
+          <Input
             onChange={handleChange}
             name="username"
             placeholder="username"
             value={formData.username}
-            id="username"
+            autoComplete="username"
           />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
+          <Label htmlFor="password">Password: </Label>
+          <Input
             onChange={handleChange}
             type="password"
             name="password"
             placeholder="password"
             value={formData.password}
-            id="password"
+            autoComplete="current-password"
           />
-        </div>
-
-        {formErrors.length
-          ? <p>{formErrors}</p>
-          : null}
-
-        <button>Submit</button>
-      </form>
-    </div>
+          <Div margin="1rem 0 0" display="flex">
+            <Button disabled={!formData.password} id="updateProfile">
+              Save Changes
+            </Button>
+            <Div margin="0 0 0 1rem" display="flex" align="center">
+              {formErrors}
+            </Div>
+          </Div>
+        </form>
+      </Div>
+    </Card>
   )
 }
 

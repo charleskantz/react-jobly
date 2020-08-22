@@ -29,8 +29,7 @@ class JoblyApi {
   }
 
   // call server and register new user
-  static async register({ username, password, first_name, last_name, email }) {
-    let photo_url = "https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
+  static async register({ username, password, first_name, last_name, email, photo_url }) {
     let res = await this.request(
       'users',
       { username, password, first_name, last_name, email, photo_url },

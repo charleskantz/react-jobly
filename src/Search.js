@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Button } from './Common/Button';
 import { Input } from './Common/Input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const StyledForm = styled.form`
   background-color: white;
@@ -17,7 +18,7 @@ const StyledForm = styled.form`
 /** Search bar for searching jobs or companies.
  *  Results are live with debounce effect
  */
-function Search({ doSearch, query, setQuery }) {
+function Search({ doSearch, query, setQuery, icon }) {
 
   const handleChange = evt => {
     setQuery(evt.target.value);
@@ -32,7 +33,7 @@ function Search({ doSearch, query, setQuery }) {
     <StyledForm onSubmit={handleSubmit} >
       <Input
         type="search"
-        placeholder="Search..."
+        placeholder={`${<FontAwesomeIcon icon={icon} />} Search`}
         name="search"
         value={query}
         onChange={handleChange}
