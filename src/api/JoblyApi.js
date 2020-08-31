@@ -29,10 +29,11 @@ class JoblyApi {
   }
 
   // call server and register new user
-  static async register({ username, password, first_name, last_name, email, photo_url }) {
+  static async register({ username, password, first_name, last_name, email}) {
+
     let res = await this.request(
       'users',
-      { username, password, first_name, last_name, email, photo_url },
+      { username, password, first_name, last_name, email },
       "post"
     );
     return res.token;

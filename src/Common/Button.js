@@ -15,6 +15,7 @@ export const Button = styled.button`
   cursor: pointer;
   display: inline-block;
   margin: ${props => props.margin || 'none'};
+  flex-shrink: 0;
 
   &:focus: {
     outline: 0;

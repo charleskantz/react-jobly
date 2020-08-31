@@ -29,5 +29,9 @@ export const LightMiceType = styled.p`
   text-rendering: optimizeLegibility;
   letter-spacing: .3px;
   padding-top: 5px;
+  display: ${props => props.display
+    ? props.display : "block"};
+  margin: ${props => props.margin
+    ? props.margin : "none"};
 `;
 

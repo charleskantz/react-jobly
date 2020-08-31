@@ -8,6 +8,8 @@ import { Div } from '../Common/Div';
 
 function UserCard({ userInfo }) {
 
+  const DEFAULT_AVATAR = 'https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png'
+
   const { username, first_name, last_name, email, photo_url } = userInfo;
 
   // display frist and last name if available, otherwise use username
@@ -17,7 +19,7 @@ function UserCard({ userInfo }) {
 
   return (
     <Card transparent>
-        <Image src={photo_url} size="48" />
+        <Image src={photo_url || DEFAULT_AVATAR} size="48" />
       <Div margin="0 0 0 1rem">
         <Heading>{userHeading}</Heading>
         <LightMiceType><FontAwesomeIcon icon={faEnvelope} /> {email}</LightMiceType>
