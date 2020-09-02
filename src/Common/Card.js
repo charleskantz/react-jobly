@@ -9,11 +9,14 @@ export const Card = styled.div`
     props.transparent ? "transparent" : "white"};
   border: 1px solid rgb(228, 231, 240);
   border-radius: 4px;
-  width: ${props =>
-    props.width ? props.width : '400px'};
-  margin: 1rem auto;
+  margin: .5rem;
   padding: 16px;
   display: flex;
   flex-direction: ${props =>
-    props.column && 'column'}
+    props.column && 'column'};
+
+    @media (min-width: 768px) {
+      width: 700px;
+      margin: 1rem auto;
+    }
 `;

@@ -3,18 +3,25 @@ import { Link, NavLink } from "react-router-dom";
 import AuthContext from '../AuthContext';
 import styled from '@emotion/styled';
 import { faMicroblog } from '@fortawesome/free-brands-svg-icons';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons';
 import IconSpan from '../Common/IconSpan';
 
 const NavBar = styled.nav`
   background-color: #fff;
   border-bottom: .0625rem solid rgba(33,37,44,.1);
+`;
+
+const FlexContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
   & > a {
     display: flex;
     text-decoration: none;
-    padding: 0 .9375rem;
+  }
+
+  @media (min-width: 768px) {
+    width: 700px;
   }
 `;
 
@@ -56,12 +63,13 @@ function Nav({ logout }) {
    */
   return (
     <NavBar>
-      <NavLink exact to="/">
-        <IconSpan iconSize="2x" text="Jobly" color="blue" image={faMicroblog} />
-      </NavLink>
-      <StyledNavItems>
-        {userInfo
-          ? <>
+      <FlexContainer>
+        <NavLink exact to="/">
+          <IconSpan padding="0 0.9375rem" iconSize="2x" text="Jobly" color="blue" image={faMicroblog} />
+        </NavLink>
+        <StyledNavItems>
+          {userInfo
+            ? <>
 
               <NavLink to="/companies">Companies</NavLink>
               <NavLink to="/jobs">Jobs</NavLink>
@@ -70,14 +78,38 @@ function Nav({ logout }) {
                 <IconSpan image={userInfo.photo_url || faUserCircle} iconSize="2x" size="36" text="Log Out" />
               </Link>
             </>
-          : <>
+            : <>
               <NavLink to="/login">Log In</NavLink>
               <NavLink to="/signup">Sign Up</NavLink>
             </>
-        }
-      </StyledNavItems>
+          }
+        </StyledNavItems>
+      </FlexContainer>
     </NavBar>
   )
 }
 
 export default Nav;
+
+
+/*
+
+        <StyledNavItems>
+          {userInfo
+            ? <>
+
+              <NavLink to="/companies">Companies</NavLink>
+              <NavLink to="/jobs">Jobs</NavLink>
+              <NavLink to="/profile">Profile</NavLink>
+              <Link className="nav-link" to="/" onClick={logout}>
+                <IconSpan image={userInfo.photo_url || faUserCircle} iconSize="2x" size="36" text="Log Out" />
+              </Link>
+            </>
+            : <>
+              <NavLink to="/login">Log In</NavLink>
+              <NavLink to="/signup">Sign Up</NavLink>
+            </>
+          }
+        </StyledNavItems>
+
+*/

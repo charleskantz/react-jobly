@@ -35,7 +35,7 @@ function JobList() {
 
   return (
     <>
-      <Search doSearch={search} query={query} setQuery={setQuery} />
+      <Search doSearch={search} query={query} setQuery={setQuery} page="Jobs" />
       {jobs.length
         ? <JobCardList jobs={jobs} apply={apply} />
         : <p>Sorry, no results found.</p>

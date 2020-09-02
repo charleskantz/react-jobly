@@ -13,7 +13,7 @@ import * as Yup from 'yup';
 
 /** Profile - Form for updating the profile;
  *  requires a valid password;
- *  Username can not be updated;
+ *  Username cannot be updated;
  */
 function Profile() {
 
@@ -48,7 +48,7 @@ function Profile() {
       .required('Required')
   });
 
-  const submitUpdates = async (values, setStatus) => {
+  const submitUpdates = async (values, setStatus, setFieldValue) => {
 
     let profileData = {
       username: values.username,
@@ -61,7 +61,8 @@ function Profile() {
     let updatedUser;
     try {
       updatedUser = await JoblyApi.updateUser(profileData);
-      setStatus("Update successful!")
+      setFieldValue("password", "", false);
+      setStatus("Update successful!");
     }
     catch (err) {
       console.error(err);
@@ -79,7 +80,7 @@ function Profile() {
           <Formik
             initialValues={initialFormValues}
             validationSchema={UpdateSchema}
-            onSubmit={(values, { setStatus }) => submitUpdates(values, setStatus)}
+            onSubmit={(values, { setStatus, setFieldValue }) => submitUpdates(values, setStatus, setFieldValue)}
           >
             {({
               values,
@@ -88,8 +89,7 @@ function Profile() {
               handleBlur,
               handleSubmit,
               isSubmitting,
-              isValid,
-              setStatus
+              isValid
             }) => (
                 <form onSubmit={handleSubmit}>
                   <Label htmlFor="username">Username</Label>

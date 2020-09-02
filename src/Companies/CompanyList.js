@@ -6,7 +6,6 @@ import useDebounce from '../hooks/useDebounce';
 import { CARDS_PER_PAGE } from '../Jobs/JobCardList';
 import Pagination from "../NavRoutes/Pagination";
 import Loading from "../Common/Loading";
-import { faBuilding } from '@fortawesome/free-solid-svg-icons'
 
 /** Companies - Renders a list of companies.
  *   - CompanyList > CompanyCard > Company
@@ -42,7 +41,7 @@ function CompanyList() {
 
   return (
     <div className="Companies">
-      <Search doSearch={search} query={query} setQuery={setQuery} icon={faBuilding} />
+      <Search doSearch={search} query={query} setQuery={setQuery} page="Companies" />
       <div className="Companies-list">
         <div className="Companies-card-area">
           {companies.length

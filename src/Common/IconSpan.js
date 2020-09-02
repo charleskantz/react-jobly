@@ -13,6 +13,8 @@ const IconSpanStyle = styled.span`
   text-rendering: optimizeLegibility;
   align-items: center;
   cursor: pointer;
+  padding: ${props => props.padding
+    ? props.padding : "none"};
 
   & > p {
     padding-left: 8px;
@@ -25,14 +27,14 @@ const IconSpanStyle = styled.span`
   }
 `;
 
-function IconSpan({ color, text, image, size, iconSize }) {
+function IconSpan({ color, text, image, size, iconSize, padding }) {
 
   const userImage = typeof image === "string"
   ? <Image size={size} src={image} />
   : <FontAwesomeIcon icon={image} size={iconSize} />;
 
   return (
-    <IconSpanStyle color={color}>
+    <IconSpanStyle color={color} padding={padding}>
       {userImage}
       <p>{text}</p>
     </IconSpanStyle>

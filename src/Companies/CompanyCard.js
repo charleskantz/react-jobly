@@ -76,7 +76,7 @@ function CompanyCard({ company }) {
   const { handle, name, description, num_employees, logo_url, job_count } = company;
 
   return (
-    <Card column width="600px">
+    <Card column>
       <Container>
         <Image
           src={logo_url}
