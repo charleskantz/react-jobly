@@ -14,7 +14,10 @@ export const Card = styled.div`
   display: flex;
   flex-direction: ${props =>
     props.column && 'column'};
-
+  ${props => props.justify
+    ? `justify-content: ${props.justify};` : null}
+  ${props => props.align
+    ? `align-items: ${props.align};` : null}
     @media (min-width: 768px) {
       width: 700px;
       margin: 1rem auto;

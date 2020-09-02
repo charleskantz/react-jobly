@@ -1,6 +1,8 @@
 import React from "react";
 import { Card } from '../Common/Card';
 import { Button } from '../Common/Button';
+import { Div } from '../Common/Div';
+import { Heading, Body } from '../Common/Type';
 
 // todo: style nicely
 
@@ -20,18 +22,20 @@ function JobCard({ job, apply }){
   }
 
   return (
-    <Card column>
-      <h3>{title}</h3>
-      <p>Salary: ${salary}</p>
-      <p>{company_name}</p>
-      <p>Equity: {parseInt(equity * 100)}%</p>
-      <Button
-        className={state ? "alreadyApplied" : "buttonApply"}
-        disabled={state}
-        onClick={handleApply}
-      >
-        {state ? "Applied!" : "Apply"}
-      </Button>
+    <Card justify="space-between" align="center">
+        <Div>
+          <Heading>{title}</Heading>
+          <Body>Salary: ${salary}</Body>
+          <Body>{company_name}</Body>
+          <Body>Equity: {parseInt(equity * 100)}%</Body>
+        </Div>
+        <Button
+          className={state ? "alreadyApplied" : "buttonApply"}
+          disabled={state}
+          onClick={handleApply}
+          >
+          {state ? "Applied!" : "Apply"}
+        </Button>
     </Card>
   )
 }
