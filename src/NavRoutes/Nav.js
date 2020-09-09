@@ -120,8 +120,14 @@ function Nav({ logout }) {
   const { userInfo } = useContext(AuthContext);
   const [menu, setMenu] = useState(false);
 
-  const handleMenu = () => {
-    setMenu(menu => !menu);
+  const handleMenu = target => {
+    // only toggle menu from links when menu is already active
+    if (target === 'li' && menu) { setMenu(menu => !menu); }
+
+    // toggle menu if burger or modal are visible
+    if (target === 'menu') {
+      setMenu(menu => !menu);
+    }
   }
 
   /** If a user is logged in, show main links,
@@ -129,38 +135,38 @@ function Nav({ logout }) {
    */
   return (
     <>
-      {menu && <ModalOverlay onClick={handleMenu}></ModalOverlay>}
+      {menu && <ModalOverlay onClick={() => handleMenu('menu')}></ModalOverlay>}
       <NavBar>
         <FlexContainer>
           <NavLink exact to="/">
             <IconSpan padding="0 0.9375rem" iconSize="2x" text="Jobly" color="blue" image={faMicroblog} />
           </NavLink>
           <StyledNavItems menu={menu}>
-            <BurgerMenu onClick={handleMenu} >
+            <BurgerMenu onClick={() => handleMenu('menu')} >
               <FontAwesomeIcon icon={menu ? faTimes : faBars} size="2x" />
             </BurgerMenu>
             {userInfo
               ? <>
-                <li>
+                <li onClick={() => handleMenu('li')} >
                   <NavLink to="/companies">Companies</NavLink>
                 </li>
-                <li>
+                <li onClick={() => handleMenu('li')} >
                   <NavLink to="/jobs">Jobs</NavLink>
                 </li>
-                <li>
+                <li onClick={() => handleMenu('li')} >
                   <NavLink to="/profile">Profile</NavLink>
                 </li>
-                <li>
+                <li onClick={() => handleMenu('li')} >
                   <Link className="nav-link" to="/" onClick={logout}>
                     <IconSpan image={userInfo.photo_url || faUserCircle} iconSize="2x" size="36" text="Log Out" />
                   </Link>
                 </li>
               </>
               : <>
-                <li>
+                <li onClick={() => handleMenu('li')} >
                   <NavLink to="/login">Log In</NavLink>
                 </li>
-                <li>
+                <li onClick={() => handleMenu('li')} >
                   <NavLink to="/signup">Sign Up</NavLink>
                 </li>
               </>

@@ -25,8 +25,8 @@ function JobCard({ job, apply }){
     <Card justify="space-between" align="center">
         <Div>
           <Heading>{title}</Heading>
-          <Body>Salary: ${salary}</Body>
           <Body>{company_name}</Body>
+          <Body>Salary: ${salary}</Body>
           <Body>Equity: {parseInt(equity * 100)}%</Body>
         </Div>
         <Button

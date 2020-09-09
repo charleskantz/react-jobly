@@ -1,11 +1,24 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { Card } from "../Common/Card";
 import { Label } from "../Common/Label";
 import { Input } from "../Common/Input";
-import { Heading } from '../Common/Type';
+import { Heading, Body} from '../Common/Type';
 import { Div } from '../Common/Div';
 import { Button } from '../Common/Button';
+import styled from '@emotion/styled';
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  display: inline;
+  font-weight: 500;
+  color: rgb(15, 111, 255);
+
+  &:hover {
+    color: rgb(25, 121, 255);
+    cursor: pointer;
+  }
+`;
 
 /** Login - Form for user to login
  *
@@ -43,6 +56,7 @@ function Login({ login }) {
 
 
   return (
+    <>
     <Card column>
       <Heading>
         Log In
@@ -77,6 +91,12 @@ function Login({ login }) {
         </form>
       </Div>
     </Card>
+    <Div text="center">
+      <Body>
+        Don't have an account? <StyledLink to='/signup'>Sign up! </StyledLink>
+      </Body>
+    </Div>
+    </>
   )
 }
 

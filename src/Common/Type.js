@@ -11,6 +11,28 @@ export const Heading = styled.h1`
   letter-spacing: .4px;
 `;
 
+export const HomeSubHeading = styled.h1`
+  display: block;
+  color: #050c26;
+  line-height: 1.25;
+  font-size: 24px;
+  padding-bottom: 1.5rem;
+  text-rendering: optimizeLegibility;
+  letter-spacing: .2px;
+`;
+
+export const HomeHeading = styled.h1`
+  display: block;
+  color: #050c26;
+  line-height: 1.05;
+  font-weight: 700;
+  font-size: 60px;
+  padding-bottom: 1.5rem;
+  text-rendering: optimizeLegibility;
+  letter-spacing: .1px;
+
+`;
+
 export const Body = styled.p`
   display: block;
   color: #050c26;
@@ -35,3 +57,13 @@ export const LightMiceType = styled.p`
     ? props.margin : "none"};
 `;
 
+export const Link = styled.a`
+  display: inline;
+  font-weight: 500;
+  color: rgb(15, 111, 255);
+
+  &:hover {
+    color: rgb(25, 121, 255);
+    cursor: pointer;
+  }
+`;

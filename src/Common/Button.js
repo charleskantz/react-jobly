@@ -4,8 +4,10 @@ export const Button = styled.button`
   ${props => props.width
     ? `width: ${props.width};` : null}
   height: 48px;
-  background-color: white;
-  color: rgb(15, 111, 255);
+  background-color: ${props => props.solid
+    ? 'rgb(15, 111, 255)' : 'white'};
+  color: ${props => props.solid
+    ? 'white' : 'rgb(15, 111, 255)'};
   border: 1px solid rgb(15, 111, 255);
   border-radius: 4px;
   padding: 8px 12px;
@@ -23,7 +25,8 @@ export const Button = styled.button`
   }
 
   &:hover {
-    background-color: rgb(15, 111, 255);
+    background-color: ${props => props.solid
+      ? 'rgb(25, 121, 255)' : 'rgb(15, 111, 255)'};
     color: white;
   }
 

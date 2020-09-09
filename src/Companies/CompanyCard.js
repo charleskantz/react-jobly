@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faUsers } from '@fortawesome/free-solid-svg-icons';
 
-const DetailsDiv = styled.div`
+export const DetailsDiv = styled.div`
   margin-left: 16px;
 `;
 

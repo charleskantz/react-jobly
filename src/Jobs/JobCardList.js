@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import JobCard from "./JobCard";
-import Pagination from "../NavRoutes/Pagination";
 
 export const CARDS_PER_PAGE = 10;
 
@@ -11,27 +10,10 @@ export const CARDS_PER_PAGE = 10;
  */
 function JobCardList({ jobs, apply }) {
 
-  const [currentPage, setCurrentPage] = useState(1);
-
-  // pagination data
-  const idxLastPost = currentPage * CARDS_PER_PAGE;
-  const idxFirstPost = idxLastPost - CARDS_PER_PAGE;
-  const currentPosts = jobs.slice(idxFirstPost, idxLastPost);
-
-  const paginate = pageNumber => {
-    setCurrentPage(pageNumber);
-  };
-
   return (
     <div>
       <div className="JobsList">
-        {currentPosts.map((job) => <JobCard key={job.id} job={job} apply={apply} />)}
-        <Pagination
-          cardsPerPage={CARDS_PER_PAGE}
-          totalCards={jobs.length}
-          paginate={paginate}
-          currentPage={currentPage}
-        />
+        {jobs.map((job) => <JobCard key={job.id} job={job} apply={apply} />)}
       </div>
     </div>
   );

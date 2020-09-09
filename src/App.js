@@ -7,6 +7,7 @@ import useLocalStorage from './hooks/useLocalStorage'
 import { decode } from 'jsonwebtoken';
 import JoblyApi from './api/JoblyApi';
 import Loading from './Common/Loading';
+import Footer from './Common/Footer';
 
 // token keyname for localStorage
 export const TOKEN_STORAGE_ID = 'token';
@@ -74,6 +75,7 @@ const App = () => {
         <AuthContext.Provider value={{ userInfo, setUserInfo }}>
           <Nav logout={logout} />
           <Routes login={login} signup={signup} />
+          <Footer />
         </AuthContext.Provider>
       </BrowserRouter>
     </div>

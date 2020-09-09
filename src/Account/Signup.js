@@ -88,7 +88,7 @@ function Signup({ signup }) {
             setStatus
           }) => (
               <form onSubmit={handleSubmit}>
-                <Label htmlFor="username">Username*</Label>
+                <Label htmlFor="username">Username</Label>
                 <ErrorMessage name="username" render={msg =>
                     <LightMiceType margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
                 <Input
@@ -98,7 +98,7 @@ function Signup({ signup }) {
                   value={values.username}
                   autoComplete="username"
                 />
-                <Label htmlFor="password">Password*</Label>
+                <Label htmlFor="password">Password</Label>
                 <ErrorMessage name="password" render={msg =>
                     <LightMiceType margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
                 <Input
