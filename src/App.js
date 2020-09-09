@@ -51,7 +51,6 @@ const App = () => {
       setToken(token);
       return { login: true };
     } catch (err) {
-      console.log('signup err', err);
       return { login: false, err };
     }
   };

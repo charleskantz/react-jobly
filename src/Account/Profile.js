@@ -65,7 +65,6 @@ function Profile() {
       setStatus("Update successful!");
     }
     catch (err) {
-      console.error(err);
       setStatus(err);
     }
     setUserInfo({ ...updatedUser, jobs });

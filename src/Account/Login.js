@@ -48,7 +48,7 @@ function Login({ login }) {
     evt.preventDefault();
     let result = await login(formData);
     if (result.login) {
-      history.push('/jobs');
+      history.push('/companies');
     } else {
       setFormErrors(result.err);
     }

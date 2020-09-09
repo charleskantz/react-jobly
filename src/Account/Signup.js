@@ -55,7 +55,6 @@ function Signup({ signup }) {
   }
 
   const handleSignup = async (values, setStatus) => {
-    console.log(values, setStatus);
     let result = await signup(values);
     if (result.login) {
       history.push("/companies");

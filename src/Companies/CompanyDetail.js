@@ -29,7 +29,6 @@ function CompanyDetail() {
   const { handle } = useParams();
   const [currentCompany, setCompany] = useState(null);
   const { userInfo } = useContext(AuthContext);
-  console.log('userInfo', userInfo);
 
   // Get list of jobs for this company from DB
   useEffect(() => {
