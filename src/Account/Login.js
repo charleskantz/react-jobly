@@ -1,28 +1,14 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Card } from "../Common/Card";
 import { Label } from "../Common/Label";
 import { Input } from "../Common/Input";
-import { Heading, Body} from '../Common/Type';
+import { Heading, Body } from '../Common/Type';
 import { Div } from '../Common/Div';
 import { Button } from '../Common/Button';
-import styled from '@emotion/styled';
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  display: inline;
-  font-weight: 500;
-  color: rgb(15, 111, 255);
-
-  &:hover {
-    color: rgb(25, 121, 255);
-    cursor: pointer;
-  }
-`;
+import { StyledLink } from '../Common/StyledLink';
 
 /** Login - Form for user to login
- *
- * @param {login} prop: handles call DB to attempt login
  */
 function Login({ login }) {
   // set history state for potential redirect

@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="css-omwz41"
+  >
+    <h1
+      class="css-1awjs8x"
+    >
+      Sign Up
+    </h1>
+    <p
+      class="css-1s86eya"
+    >
+      All fields are required.
+    </p>
+    <div
+      class="css-orpbuy"
+    >
+      <form>
+        <label
+          class="css-182h8ta"
+          for="username"
+        >
+          Username
+        </label>
+        <input
+          autocomplete="username"
+          class="css-1dltt36"
+          name="username"
+          value=""
+        />
+        <label
+          class="css-182h8ta"
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          autocomplete="new-password"
+          class="css-1dltt36"
+          name="password"
+          type="password"
+          value=""
+        />
+        <label
+          class="css-182h8ta"
+          for="email"
+        >
+          Email
+        </label>
+        <input
+          autocomplete="email"
+          class="css-1dltt36"
+          name="email"
+          type="email"
+          value=""
+        />
+        <label
+          class="css-182h8ta"
+          for="first_name"
+        >
+          First Name
+        </label>
+        <input
+          autocomplete="given-name"
+          class="css-1dltt36"
+          name="first_name"
+          value=""
+        />
+        <label
+          class="css-182h8ta"
+          for="last_name"
+        >
+          Last Name
+        </label>
+        <input
+          autocomplete="family-name"
+          class="css-1dltt36"
+          name="last_name"
+          value=""
+        />
+        <div
+          class="css-303viu"
+          display="flex"
+        >
+          <button
+            class="css-1xrqucq"
+            type="submit"
+          >
+            Sign Up
+          </button>
+          <div
+            class="css-1fkcxxx"
+            display="flex"
+          >
+            <p
+              class="css-1s86eya"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

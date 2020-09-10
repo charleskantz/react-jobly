@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot when logged in 1`] = `
+<DocumentFragment>
+  <div
+    class="css-ioutv6"
+    display="flex"
+  >
+    <img
+      class="css-106gtww"
+      size="280"
+      src="home_hero_img.svg"
+    />
+    <div
+      class="css-1numv7f"
+    >
+      <h1
+        class="css-14exbet"
+      >
+        Welcome back, testfirst.
+      </h1>
+      <h1
+        class="css-cyue6k"
+      >
+        Apply to the best jobs with Jobly
+      </h1>
+      <h1
+        class="css-14exbet"
+      >
+        Find and apply privately with one-click applications. See salary and equity upfront.
+      </h1>
+      <a
+        class="css-1dyiqdp"
+        href="/companies"
+      >
+        Find Jobs Now
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`matches snapshot when logged out 1`] = `
+<DocumentFragment>
+  <div
+    class="css-ioutv6"
+    display="flex"
+  >
+    <img
+      class="css-106gtww"
+      size="280"
+      src="home_hero_img.svg"
+    />
+    <div
+      class="css-1numv7f"
+    >
+      <h1
+        class="css-cyue6k"
+      >
+        Apply to the best jobs with Jobly
+      </h1>
+      <h1
+        class="css-14exbet"
+      >
+        Find and apply privately with one-click applications. See salary and equity upfront.
+      </h1>
+      <a
+        class="css-1dyiqdp"
+        href="/login"
+      >
+        Find Jobs Now
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;

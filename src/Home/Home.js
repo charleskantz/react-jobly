@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import AuthContext from '../AuthContext';
 import { HomeHeading, HomeSubHeading } from '../Common/Type';
-import { Button } from '../Common/Button';
+import { ButtonLink } from '../Common/StyledLink';
 import { HomeDiv, Div } from '../Common/Div';
 import heroImg from '../Common/home_hero_img.svg';
 import { Image } from '../Common/Image';
@@ -11,26 +10,24 @@ import { Image } from '../Common/Image';
 function Home() {
 
   const { userInfo } = useContext(AuthContext);
-  const history = useHistory();
 
-  const handleHomeClick = () => {
-    if (!userInfo) {
-      history.push('/login');
-    } else {
-      history.push('/companies')
-    }
-  }
+  const buttonHref = userInfo ? '/companies' : '/login';
 
   return (
     <HomeDiv display="flex">
       <Image src={heroImg} size="280"/>
       <Div margin="1rem">
+        {userInfo &&
+          <HomeSubHeading>
+            Welcome back, {userInfo.first_name}.
+          </HomeSubHeading>
+        }
         <HomeHeading>Apply to the best jobs with Jobly</HomeHeading>
         <HomeSubHeading>
           Find and apply privately with one-click applications.
           See salary and equity upfront.
         </HomeSubHeading>
-        <Button solid onClick={handleHomeClick} >Find Jobs Now</Button>
+        <ButtonLink solid href={buttonHref} >Find Jobs Now</ButtonLink>
       </Div>
     </HomeDiv>
   );

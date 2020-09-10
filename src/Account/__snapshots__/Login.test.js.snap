@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="css-omwz41"
+  >
+    <h1
+      class="css-1awjs8x"
+    >
+      Log In
+    </h1>
+    <div
+      class="css-orpbuy"
+    >
+      <form>
+        <label
+          class="css-182h8ta"
+          for="username"
+        >
+          Username: 
+        </label>
+        <input
+          autocomplete="username"
+          class="css-1dltt36"
+          name="username"
+          placeholder="username"
+          value=""
+        />
+        <label
+          class="css-182h8ta"
+          for="password"
+        >
+          Password: 
+        </label>
+        <input
+          autocomplete="current-password"
+          class="css-1dltt36"
+          name="password"
+          placeholder="password"
+          type="password"
+          value=""
+        />
+        <div
+          class="css-303viu"
+          display="flex"
+        >
+          <button
+            class="css-1xrqucq"
+            disabled=""
+            id="updateProfile"
+          >
+            Save Changes
+          </button>
+          <div
+            class="css-1fkcxxx"
+            display="flex"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+  <div
+    class="css-a1jyig"
+  >
+    <p
+      class="css-zsarox"
+    >
+      Don't have an account? 
+      <a
+        class="css-q25ibu"
+        to="/signup"
+      >
+        Sign up! 
+      </a>
+    </p>
+  </div>
+</DocumentFragment>
+`;

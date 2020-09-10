@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="css-1ej7pc7"
+  >
+    <img
+      class="css-1qe6nee"
+      size="48"
+      src="https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png"
+    />
+    <div
+      class="css-1bjh8rn"
+    >
+      <h1
+        class="css-1awjs8x"
+      >
+        testfirst testlast
+      </h1>
+      <p
+        class="css-1s86eya"
+      >
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-envelope fa-w-16 "
+          data-icon="envelope"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
+            fill="currentColor"
+          />
+        </svg>
+         test@test.net
+      </p>
+    </div>
+  </div>
+  <div
+    class="css-omwz41"
+  >
+    <h1
+      class="css-1awjs8x"
+    >
+      Edit Profile
+    </h1>
+    <div
+      class="css-orpbuy"
+    >
+      <form>
+        <label
+          class="css-182h8ta"
+          for="username"
+        >
+          Username
+        </label>
+        <input
+          autocomplete="username"
+          class="css-1dltt36"
+          disabled=""
+          name="username"
+          placeholder="username"
+          value="testuser"
+        />
+        <label
+          class="css-182h8ta"
+          for="first_name"
+        >
+          First Name
+        </label>
+        <input
+          autocomplete="given-name"
+          class="css-1dltt36"
+          name="first_name"
+          placeholder="first_name"
+          value="testfirst"
+        />
+        <label
+          class="css-182h8ta"
+          for="last_name"
+        >
+          Last Name
+        </label>
+        <input
+          autocomplete="family-name"
+          class="css-1dltt36"
+          name="last_name"
+          placeholder="last_name"
+          value="testlast"
+        />
+        <label
+          class="css-182h8ta"
+          for="email"
+        >
+          Email
+        </label>
+        <input
+          autocomplete="email"
+          class="css-1dltt36"
+          name="email"
+          placeholder="email"
+          value="test@test.net"
+        />
+        <label
+          class="css-182h8ta"
+          for="photo_url"
+        >
+          Photo URL
+        </label>
+        <input
+          autocomplete="photo"
+          class="css-1dltt36"
+          name="photo_url"
+          placeholder="URL for your profile picture"
+          value=""
+        />
+        <label
+          class="css-182h8ta"
+          for="password"
+        >
+          Re-enter Password
+        </label>
+        <input
+          autocomplete="current-password"
+          class="css-1dltt36"
+          name="password"
+          placeholder="password"
+          type="password"
+          value=""
+        />
+        <div
+          class="css-303viu"
+          display="flex"
+        >
+          <button
+            class="css-1xrqucq"
+            id="updateProfile"
+            type="submit"
+          >
+            Save Changes
+          </button>
+          <div
+            class="css-1fkcxxx"
+            display="flex"
+          >
+            <p
+              class="css-1s86eya"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
