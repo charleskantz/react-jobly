@@ -10,6 +10,7 @@ export const Input = styled.input`
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   display: block;
   width: 100%;
+  -webkit-appearance: textfield;
 
   &::placeholder {
     color: #7b91b1;
