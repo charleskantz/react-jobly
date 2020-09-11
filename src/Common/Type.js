@@ -11,7 +11,7 @@ export const Heading = styled.h1`
   letter-spacing: .4px;
 `;
 
-export const HomeSubHeading = styled.h1`
+export const HomeSubHeading = styled.h2`
   display: block;
   color: #050c26;
   line-height: 1.25;

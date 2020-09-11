@@ -21,6 +21,7 @@ export const Div = styled.div`
 `;
 
 export const HomeDiv = styled.div`
+  box-sizing: border-box;
   width: 100%;
   margin: 1rem 0;
   padding: 1rem;

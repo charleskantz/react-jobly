@@ -1,11 +1,12 @@
 import React from "react";
 import { Card } from '../Common/Card';
 import { Image } from '../Common/Image';
-import { ButtonLink } from '../Common/StyledLink';
+import { Button } from '../Common/Button';
 import { Heading, Body, LightMiceType } from '../Common/Type';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom'
 
 export const DetailsDiv = styled.div`
   margin-left: 16px;
@@ -38,6 +39,8 @@ function CompanyCard({ company }) {
   // separate details for easier reading
   const { handle, name, description, num_employees, logo_url, job_count } = company;
 
+  const history = useHistory();
+
   return (
     <Card column>
       <Container>
@@ -59,12 +62,10 @@ function CompanyCard({ company }) {
         <Body>
           <FontAwesomeIcon icon={faBriefcase} /> {job_count} Jobs Available
         </Body>
-        <ButtonLink href={`/companies/${handle}`}>See Jobs</ButtonLink>
+        <Button onClick={() => history.push(`/companies/${handle}`)}>See Jobs</Button>
       </JobsCTA>
     </Card>
   )
 }
 
 export default CompanyCard;
-
-//       <Link style={{textDecoration: "none", color:"black"}} className="Company" to={`/companies/${handle}`}>

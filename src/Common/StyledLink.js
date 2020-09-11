@@ -14,6 +14,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const ButtonLink = styled.a`
+  display: inline-block;
   height: 48px;
   background-color: ${props => props.solid
     ? 'rgb(15, 111, 255)' : 'white'};
@@ -23,10 +24,10 @@ export const ButtonLink = styled.a`
   border-radius: 4px;
   padding: 0 12px;
   text-align: center;
+  vertical-align: middle;
   font-size: 14px;
   letter-spacing: .2px;
   cursor: pointer;
-  display: inline-block;
   text-decoration: none;
   line-height: 3.5;
 

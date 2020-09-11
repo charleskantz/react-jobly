@@ -9,7 +9,6 @@ const StyledForm = styled.form`
   box-shadow: 0 1px 4px 0 #d2d9e5;
   padding: 16px 16px;
   margin: 1rem .5rem;
-  font-family: inherit;
   display: flex;
 
   @media (min-width: 576px) {
@@ -41,7 +40,7 @@ function Search({ doSearch, query, setQuery, page }) {
         value={query}
         onChange={handleChange}
       />
-      <Button margin="0 0 0 16px">Search!</Button>
+      <Button margin="0 0 0 16px">Search</Button>
     </StyledForm>
   )
 }

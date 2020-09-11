@@ -68,7 +68,7 @@ function Login({ login }) {
           />
           <Div margin="1rem 0 0" display="flex">
             <Button disabled={!formData.password} id="updateProfile">
-              Save Changes
+              Log in
             </Button>
             <Div margin="0 0 0 1rem" display="flex" align="center">
               {formErrors}

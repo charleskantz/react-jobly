@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 
 export const Input = styled.input`
+  -webkit-appearance: none;
+  -moz-appearance: none;
   border: 1px solid rgb(228, 231, 240);
   border-radius: 4px;
   background-color: rgb(242, 244, 247);
   height: 48px;
   font-size: 16px;
   padding: 6px 8px;
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   display: block;
   width: 100%;
-  -webkit-appearance: textfield;
 
   &::placeholder {
     color: #7b91b1;

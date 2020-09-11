@@ -1,21 +1,25 @@
 import React, { useContext } from 'react';
 import AuthContext from '../AuthContext';
 import { HomeHeading, HomeSubHeading } from '../Common/Type';
-import { ButtonLink } from '../Common/StyledLink';
+import { Button } from '../Common/Button';
 import { HomeDiv, Div } from '../Common/Div';
 import heroImg from '../Common/home_hero_img.svg';
 import { Image } from '../Common/Image';
+import { useHistory } from 'react-router-dom';
 
 // Homepage Component
 function Home() {
 
   const { userInfo } = useContext(AuthContext);
+  const history = useHistory();
 
   const buttonHref = userInfo ? '/companies' : '/login';
 
   return (
     <HomeDiv display="flex">
-      <Image src={heroImg} size="280"/>
+      <Div margin="0 0 1rem">
+        <Image src={heroImg} size="200"/>
+      </Div>
       <Div margin="1rem">
         {userInfo &&
           <HomeSubHeading>
@@ -27,7 +31,7 @@ function Home() {
           Find and apply privately with one-click applications.
           See salary and equity upfront.
         </HomeSubHeading>
-        <ButtonLink solid href={buttonHref} >Find Jobs Now</ButtonLink>
+        <Button type='button' solid onClick={() => history.push(buttonHref)} >Find Jobs Now</Button>
       </Div>
     </HomeDiv>
   );
