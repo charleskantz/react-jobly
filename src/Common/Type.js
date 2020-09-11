@@ -44,13 +44,14 @@ export const Body = styled.p`
 `;
 
 export const LightMiceType = styled.p`
-  color: rgb(123, 145, 177);
   font-size: 11px;
   font-weight: 500;
   line-height: 13.75px;
   text-rendering: optimizeLegibility;
   letter-spacing: .3px;
   padding-top: 5px;
+  color: ${props => props.color
+    ? props.color : "rgb(123, 145, 177)"};
   display: ${props => props.display
     ? props.display : "block"};
   margin: ${props => props.margin

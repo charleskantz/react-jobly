@@ -48,7 +48,10 @@ function Signup({ signup }) {
   });
 
   const cleanupApiErrors = errors => {
-    if (errors.length === 1) { return errors[0]; }
+    console.log(errors)
+    if (errors.length === 1) {
+      return errors[0];
+    }
     else {
       return errors.join("\n");
     }
@@ -89,7 +92,7 @@ function Signup({ signup }) {
               <form onSubmit={handleSubmit}>
                 <Label htmlFor="username">Username</Label>
                 <ErrorMessage name="username" render={msg =>
-                    <LightMiceType margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
+                    <LightMiceType color="tomato" margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
                 <Input
                   name="username"
                   onChange={handleChange}
@@ -99,7 +102,7 @@ function Signup({ signup }) {
                 />
                 <Label htmlFor="password">Password</Label>
                 <ErrorMessage name="password" render={msg =>
-                    <LightMiceType margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
+                    <LightMiceType color="tomato" margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
                 <Input
                   type="password"
                   name="password"
@@ -110,7 +113,7 @@ function Signup({ signup }) {
                 />
                 <Label htmlFor="email">Email</Label>
                 <ErrorMessage name="email" render={msg =>
-                    <LightMiceType margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
+                    <LightMiceType color="tomato" margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
                 <Input
                   type="email"
                   name="email"
@@ -121,7 +124,7 @@ function Signup({ signup }) {
                 />
                 <Label htmlFor="first_name">First Name</Label>
                 <ErrorMessage name="first_name" render={msg =>
-                    <LightMiceType margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
+                    <LightMiceType color="tomato" margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
                 <Input
                   onChange={handleChange}
                   name="first_name"
@@ -131,7 +134,7 @@ function Signup({ signup }) {
                 />
                 <Label htmlFor="last_name">Last Name</Label>
                 <ErrorMessage name="last_name" render={msg =>
-                    <LightMiceType margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
+                    <LightMiceType color="tomato" margin="0 0 0 1rem" display="inline-block">{msg}</LightMiceType>} />
                 <Input
                   onChange={handleChange}
                   name="last_name"
@@ -144,7 +147,7 @@ function Signup({ signup }) {
                     Sign Up
                    </Button>
                   <Div margin="0 0 0 1rem" display="flex" align="center">
-                    <LightMiceType>{status}</LightMiceType>
+                    <LightMiceType color="tomato">{status}</LightMiceType>
                   </Div>
                 </Div>
               </form>
