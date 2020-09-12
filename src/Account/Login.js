@@ -40,48 +40,68 @@ function Login({ login }) {
     }
   }
 
+  // logs in to demo account so visitors don't have to create an account
+  const handleDemoLogin = async () => {
+    let result = await login({
+      username: 'joblydemo',
+      password: 'demojobly'
+    });
+    if (result.login) {
+      history.push('/companies');
+    } else {
+      setFormErrors("Sorry, something went wrong :/ Please try again later.");
+    }
+  }
 
   return (
     <>
-    <Card column>
-      <Heading>
-        Log In
-      </Heading>
-      <Div margin="0 16px 0 0">
-        <form onSubmit={handleLogIn}>
-          <Label htmlFor="username">Username: </Label>
-          <Input
-            onChange={handleChange}
-            name="username"
-            placeholder="username"
-            value={formData.username}
-            autoComplete="username"
-          />
-          <Label htmlFor="password">Password: </Label>
-          <Input
-            onChange={handleChange}
-            type="password"
-            name="password"
-            placeholder="password"
-            value={formData.password}
-            autoComplete="current-password"
-          />
-          <Div margin="1rem 0 0" display="flex">
-            <Button disabled={!formData.password} id="updateProfile">
-              Log in
-            </Button>
-            <Div margin="0 0 0 1rem" display="flex" align="center">
-              {formErrors}
-            </Div>
-          </Div>
-        </form>
+      <Div text="center" margin="2rem">
+        <Heading>
+          Just want to check out the demo?
+        </Heading>
+        <Button solid onClick={handleDemoLogin}>
+          Log in to demo account
+        </Button>
       </Div>
-    </Card>
-    <Div text="center">
-      <Body>
-        Don't have an account? <StyledLink to='/signup'>Sign up! </StyledLink>
-      </Body>
-    </Div>
+      <Card column>
+        <Heading>
+          Log In
+      </Heading>
+        <Div margin="0 16px 0 0">
+          <form onSubmit={handleLogIn}>
+            <Label htmlFor="username">Username: </Label>
+            <Input
+              onChange={handleChange}
+              name="username"
+              placeholder="username"
+              value={formData.username}
+              autoComplete="username"
+            />
+            <Label htmlFor="password">Password: </Label>
+            <Input
+              onChange={handleChange}
+              type="password"
+              name="password"
+              placeholder="password"
+              value={formData.password}
+              autoComplete="current-password"
+            />
+            <Div margin="1rem 0 0" display="flex">
+              <Button disabled={!formData.password}>
+                Log in
+            </Button>
+              <Div margin="0 0 0 1rem" display="flex" align="center">
+                {formErrors}
+              </Div>
+            </Div>
+          </form>
+        </Div>
+      </Card>
+      <Div text="center">
+        <Body>
+          Don't have an account? <StyledLink to='/signup'>Sign up! </StyledLink>
+        </Body>
+      </Div>
     </>
   )
 }
